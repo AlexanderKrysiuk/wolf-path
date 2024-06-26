@@ -1,4 +1,6 @@
 import Image from "next/image";
+import { ModeToggle } from "@/components/ModeSwitcher";
+
 
 const Header = () => {
     return ( 
