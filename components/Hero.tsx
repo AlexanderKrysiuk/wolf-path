@@ -40,7 +40,7 @@ const Hero = () => {
         </div>
         <div className="grid grid-cols-1 px-2 text-center md:grid-cols-2">
             <div className="pb-4">
-                <Link href="https://calendly.com/alexander-krysiuk/bezplatna-konsultacja-hipnozy-clone">
+                <Link href="https://calendly.com/alexander-krysiuk/bezplatna-konsultacja-hipnozy">
                     <Button className="bg-green-500 hover:bg-green-600 text-white md:text-normal lg:text-xl">
                         Bezpłatna Konsultacja
                     </Button>
