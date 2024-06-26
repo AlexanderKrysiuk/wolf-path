@@ -7,12 +7,12 @@ import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
-import { login } from "@/actions/login";
+import { register } from "@/actions/register";
 import { useTransition, useState } from "react";
 
 import * as z from "zod";
 
-import { LoginSchema } from "@/schemas";
+import { RegisterSchema } from "@/schemas";
 
 import {
     Form,
@@ -24,24 +24,24 @@ import {
 
 } from "@/components/ui/form"
 
-export const LoginForm = () => {
+export const RegisterForm = () => {
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
     const [isPending, startTransition] = useTransition();
 
-    const form = useForm<z.infer<typeof LoginSchema>>({
-        resolver: zodResolver(LoginSchema),
+    const form = useForm<z.infer<typeof RegisterSchema>>({
+        resolver: zodResolver(RegisterSchema),
         defaultValues: {
             email: "",
             password: "",
         },
     });
 
-    const onSubmit = (values: z.infer<typeof LoginSchema>) => {
+    const onSubmit = (values: z.infer<typeof RegisterSchema>) => {
         setError("");
         setSuccess("");
         startTransition(() => {
-            login(values)
+            register(values)
                 .then((data) => {
                     setError(data.error);
                     setSuccess(data.success);
@@ -51,9 +51,9 @@ export const LoginForm = () => {
 
     return (
         <CardWrapper
-            headerLabel = "Witaj z powrotem!"
-            backButtonLabel="Nie masz konta?"
-            backButtonHref="/auth/register"
+            headerLabel = "Załóż konto!"
+            backButtonLabel="Masz ju konto?"
+            backButtonHref="/auth/login"
             showSocial
         >
             <Form {...form}>
@@ -106,7 +106,7 @@ export const LoginForm = () => {
                         type="submit"
                         className="w-full"
                     >
-                        Login
+                        Utwórz konto
                     </Button>
                 </form>
             </Form>
