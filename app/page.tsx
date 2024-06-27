@@ -6,10 +6,10 @@ import About from "@/components/About";
 
 export default function Home() {
   return (
-    <main>
+    <div>
       <Hero/>
       <About/>
-    </main>
+    </div>
     /*
     <div className="text-accent">Hello World!
       <ModeToggle/>
