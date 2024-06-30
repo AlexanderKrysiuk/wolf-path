@@ -24,7 +24,6 @@ export default {
 
                     if (passwordMatch) return user ;
                 }
-
                 return null;
             }
         })
