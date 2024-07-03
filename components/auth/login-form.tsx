@@ -9,6 +9,7 @@ import { FormError } from "@/components/form-error";
 import { FormSuccess } from "@/components/form-success";
 import { login } from "@/actions/login";
 import { useTransition, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 import * as z from "zod";
 
@@ -25,6 +26,8 @@ import {
 } from "@/components/ui/form"
 
 export const LoginForm = () => {
+    const searchParams = useSearchParams();
+    const urlError = searchParams.get("error") === "OAuthAccountNotLinked" ? "Email alreade in use with different provider" : "";
     const [error, setError] = useState<string | undefined>("");
     const [success, setSuccess] = useState<string | undefined>("");
     const [isPending, startTransition] = useTransition();
@@ -44,10 +47,10 @@ export const LoginForm = () => {
             login(values)
                 .then((data) => {
                     if (data.error){
-                        setError(data.error);
+                        setError(data?.error);
                     }
                     if (data.success){
-                        setSuccess(data.success);
+                        setSuccess(data?.success);
                     }
                 });
         });
@@ -103,7 +106,7 @@ export const LoginForm = () => {
                             )}
                         />
                     </div>
-                    <FormError message={error}/>
+                    <FormError message={error || urlError}/>
                     <FormSuccess message={success}/>
                     <Button
                         disabled={isPending}
