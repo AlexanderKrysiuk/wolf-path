@@ -12,7 +12,9 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     if (!validatedFields.success) {
         return { error: "Invalid fields!" };
     }
-    const { email, password } = validatedFields.data;
+    const email = validatedFields.data.email.toLowerCase();
+    const password = validatedFields.data.password;
+
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const existingUser = await getUserByEmail(email);
