@@ -9,7 +9,7 @@ const LoginWork = () => {
                     🔐 Logowanie
                 </h1>
                 <div>
-                    <LoginButton> 
+                    <LoginButton mode="modal" asChild> 
                         <Button variant={`secondary`} className="w-full">
                             Sign in
                         </Button>
