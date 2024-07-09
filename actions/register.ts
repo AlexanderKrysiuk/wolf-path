@@ -12,7 +12,7 @@ export const register = async (values: z.infer<typeof RegisterSchema>) => {
     const validatedFields = RegisterSchema.safeParse(values);
 
     if (!validatedFields.success) {
-        return { error: "Invalid fields!" };
+        return { error: "Podano nieprawidłowe pola!" };
     }
     const name = validatedFields.data.name;
     const email = validatedFields.data.email.toLowerCase();

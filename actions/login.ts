@@ -16,7 +16,7 @@ export const login = async (
     const validatedFields = LoginSchema.safeParse(values);
 
     if (!validatedFields.success) {
-        return { error: "Invalid fields!" };
+        return { error: "Podano nieprawidłowe pola!" };
     }
     
     const email = validatedFields.data.email.toLowerCase();
@@ -24,7 +24,7 @@ export const login = async (
     const existingUser = await getUserByEmail(email)
 
     if (!existingUser || !existingUser.email || !existingUser.password) {
-        return { error: "Email does not exist!" }
+        return { error: "Podany Email nie istnieje!" }
     }
 
     if (!existingUser.emailVerified) {
@@ -34,7 +34,7 @@ export const login = async (
             verificationToken.token,
         )
 
-        return { success: "Confirmation email sent!"};
+        return { success: "Wysłano e-mail veryfikacyjny!"};
     }
 
     try {
@@ -47,12 +47,12 @@ export const login = async (
         if (error instanceof AuthError) {
             switch (error.type) {
                 case 'CredentialsSignin':
-                    return { success: "", error: "Invalid Credentials!" }
+                    return { success: "", error: "Nieprawidłowe dane!" }
                 default:
-                    return { success: "", error: "Something went wrong!"}
+                    return { success: "", error: "Coś poszło nie tak!"}
             }
         }
         throw error;
     }
-    return {success: "", error: "Something went wrong"};
+    return {success: "", error: "Coś poszło nie tak!"};
 }
