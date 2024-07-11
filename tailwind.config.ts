@@ -19,6 +19,9 @@ const config = {
       },
     },
     extend: {
+      screens: {
+        "xs": "568px"
+      },
       fontFamily:{
         mjolnir: ['Mjolnir', 'sans-serif']
       },
