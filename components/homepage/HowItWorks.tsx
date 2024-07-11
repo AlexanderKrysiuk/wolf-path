@@ -17,7 +17,7 @@ const HowItWorks = () => {
                 Wszystko zaczyna się w naszej podświadomości. To ona zarządza naszym biciem serca, oddychaniem, wszystkimi innymi czynnościami fizjologicznymi. A także naszymi emocjami, zachowaniami, przekonaniami, programami, odruchami itd. itd.
             </p>
             <p className="py-2 sm:text-lg md:text-base xl:text-lg">
-                I właśnie dlatego zmuszanie się do zmiany nawyków jest bardzo często nieskuteczne. Dlatego tez bardzo wiele osób stosujących afirmacje ma w pewnym momencie wrażenie, że one po prostu nie działają. Nieważne ile razy będziesz sobie powtarzać „jestem milionerem, jestem milionerem” albo „od dziś nie jem ciastek, od dzisiaj nie jem ciastek". Jeśli Twoja podświadomość uzna to za kłamstwo, po prostu w to nie uwierzy i nie uwidoczni Ci tego w życiu.
+                I właśnie dlatego zmuszanie się do zmiany nawyków jest bardzo często nieskuteczne. Dlatego tez bardzo wiele osób stosujących afirmacje ma w pewnym momencie wrażenie, że one po prostu nie działają. Nieważne ile razy będziesz sobie powtarzać &quot;jestem milionerem, jestem milionerem&quot; albo &quot;od dziś nie jem ciastek, od dzisiaj nie jem ciastek&quot;. Jeśli Twoja podświadomość uzna to za kłamstwo, po prostu w to nie uwierzy i nie uwidoczni Ci tego w życiu.
             </p>
             <p className="py-2 sm:text-lg md:text-base text-lg xl:text-lg">
                 Żeby zmiany miały efekt trwały, trzeba je zainstalować od środka. I właśnie na tym polega hipnoza, którą wykorzystuję w transformacji życia. To dosłownie zmiana oprogramowanie Twojej podświadomości. Poprzez hipnozę tworzymy nowe ścieżki neuronowe w mózgu, dzięki czemu zmiany w naszym życiu występują naturalnie w zgodzie z nami bez uczucia przymusu.
