@@ -6,44 +6,49 @@ import BookSessionButtons from "@/components/homepage/BookSessionButtons";
 
 const HowItWorks = () => {
     return ( 
-        <div>
-            <div className="font-mjolnir flex text-4xl gap-x-4">
+        <div className="">
+            <div className="font-mjolnir flex text-xl md:text-4xl gap-x-4">
                 NA CZYM TO
                 <div className="text-green-500">
                     POLEGA?
                 </div>
             </div>
-            <p className="py-2 sm:text-lg md:text-base xl:text-lg">
+            <p className="py-1 md:py-2 xl:py-4 text-sm md:text-2xl xl:text-xl">
                 Wszystko zaczyna się w naszej podświadomości. To ona zarządza naszym biciem serca, oddychaniem, wszystkimi innymi czynnościami fizjologicznymi. A także naszymi emocjami, zachowaniami, przekonaniami, programami, odruchami itd. itd.
             </p>
-            <p className="py-2 sm:text-lg md:text-base xl:text-lg">
+            <p className="py-1 md:py-2 xl:py-4 text-sm md:text-2xl xl:text-xl">
                 I właśnie dlatego zmuszanie się do zmiany nawyków jest bardzo często nieskuteczne. Dlatego tez bardzo wiele osób stosujących afirmacje ma w pewnym momencie wrażenie, że one po prostu nie działają. Nieważne ile razy będziesz sobie powtarzać &quot;jestem milionerem, jestem milionerem&quot; albo &quot;od dziś nie jem ciastek, od dzisiaj nie jem ciastek&quot;. Jeśli Twoja podświadomość uzna to za kłamstwo, po prostu w to nie uwierzy i nie uwidoczni Ci tego w życiu.
             </p>
-            <p className="py-2 sm:text-lg md:text-base text-lg xl:text-lg">
+            <p className="py-1 md:py-2 xl:py-4 text-sm md:text-2xl xl:text-xl">
                 Żeby zmiany miały efekt trwały, trzeba je zainstalować od środka. I właśnie na tym polega hipnoza, którą wykorzystuję w transformacji życia. To dosłownie zmiana oprogramowanie Twojej podświadomości. Poprzez hipnozę tworzymy nowe ścieżki neuronowe w mózgu, dzięki czemu zmiany w naszym życiu występują naturalnie w zgodzie z nami bez uczucia przymusu.
             </p>
-            <div className="grid grid-cols-3 gap-x-4 py-2">
-                <Card className="bg-secondary p-4 flex">
-                    <FiCheckCircle className="h-full w-[50%] text-green-500 items-center"/>
-                    <div className="flex text-green-500 pl-4 font-bold items-center">
+            <div className="grid grid-cols-3 gap-x-2 py-4">
+                <Card className="bg-secondary p-1 grid grid-cols-6">
+                    <div>
+                        <FiCheckCircle className="h-full w-full text-green-500 items-center"/>
+                    </div>
+                    <div className="flex text-sm md:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
                         W Hipnozie tworzą się nowe ścieżki neuronowe.                    
                     </div>
                 </Card>
-                <Card className="bg-secondary p-4 flex">
-                    <FiCheckCircle className="h-full w-[50%] text-green-500 items-center"/>
-                    <div className="flex text-green-500 pl-4 font-bold items-center">
+                <Card className="bg-secondary p-1 xl:p-4 grid grid-cols-6">
+                    <div>
+                        <FiCheckCircle className="h-full w-full text-green-500 items-center"/>
+                    </div>
+                    <div className="flex text-sm md:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
                         Stanu hipnozy doświadcza każdy z nas.
                     </div>
                 </Card>
-                <Card className="bg-secondary p-4 flex">
-                    <FiCheckCircle className="h-full w-[50%] text-green-500 items-center"/>
-                    <div className="flex text-green-500 pl-4 font-bold items-center">
+                <Card className="bg-secondary p-1 grid grid-cols-6">
+                    <div>
+                        <FiCheckCircle className="h-full w-full text-green-500 items-center"/>
+                    </div>
+                    <div className="flex text-sm md:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
                         Zmiany są naturalne zgodne z nami.                    
                     </div>
                 </Card>
             </div>
-            <BookSessionButtons/>
-            {/*
+             {/*
             <p className="text-lg py-4 xl:text-lg">
                 W swojej praktyce oraz w pomaganiu w transformacji Twojego życia stosuję różnorodne techniki hipnozy. Hipnoza jest niezwykle skuteczną metodą, która w wielu przypadkach przynosi znacznie lepsze rezultaty niż tradycyjne formy terapii. Dzięki niej można osiągnąć głęboką i trwałą zmianę w sposób szybki i efektywny.
             </p>

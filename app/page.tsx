@@ -13,7 +13,7 @@ export default function Home() {
             <section className="snap-center snap-always">
               <Header/>
             </section>
-            <div className="max-w-[1400px] lg:px-[20vh]">
+            <div className="max-w-[1400px] xl:px-[15vh] justify-center mx-auto">
               <section className="h-screen pt-[10vh] snap-center snap-always"><Hero/></section>
               <section className="h-screen pt-[10vh] snap-center snap-always"><HowItWorks/></section>
               {/*

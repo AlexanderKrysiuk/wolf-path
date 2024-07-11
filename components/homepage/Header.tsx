@@ -10,7 +10,9 @@ const Header = () => {
             <div className="justify-between flex items-center h-[10vh]">
                 <div className="items-center flex space-x-4">
 
-                 <div className="text-4xl flex font-mjolnir items-center">
+                 <div className="text-xl flex font-mjolnir items-center
+                 md:text-4xl
+                 ">
                     
                         WOLF
                     

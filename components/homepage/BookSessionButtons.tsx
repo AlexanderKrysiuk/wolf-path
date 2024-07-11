@@ -3,17 +3,19 @@ import { Button } from "@/components/ui/button";
 
 const BookSessionButtons = () => {
     return (  
-        <div className="text-center flex items-center w-full px-auto justify-center">
-            <div className="p-4">
+        <div className="w-full px-auto justify-center flex gap-x-4 md:grid md:justify-start">
+            <div className="pt-4">
                 <Link href="https://calendly.com/alexander-krysiuk/bezplatna-konsultacja-hipnozy">
-                    <Button className="bg-green-500 hover:bg-green-600 text-white text-xl p-4 xl:text-3xl xl:p-8">
+                    <Button className="bg-green-500 hover:bg-green-600 text-white p-4 
+                    md:text-2xl md:p-6">
                         Umów bezpłatną konsultację
                     </Button>
                 </Link>
             </div>
-            <div className="p-4">
+            <div className="pt-4">
                 <Link href="https://calendly.com/alexander-krysiuk/sesja-hipnozy">
-                    <Button className="bg-green-500 hover:bg-green-600 text-white text-xl p-4 xl:text-3xl xl:p-8">
+                    <Button className="bg-green-500 hover:bg-green-600 text-white p-4 
+                    md:text-2xl md:p-6">
                         Umów indywidualną sesję
                     </Button>
                 </Link>
