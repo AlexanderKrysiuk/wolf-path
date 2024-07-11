@@ -1,14 +1,32 @@
 import { ModeToggle } from "@/components/ModeSwitcher";
 import Image from "next/image";
-import Header from "@/components/Header";
-import Hero from "@/components/Hero";
+import Header from "@/components/homepage/Header";
+import Hero from "@/components/homepage/Hero";
 import About from "@/components/About";
+import HowItWorks from "@/components/homepage/HowItWorks";
+import AboutMe from "@/components/homepage/AboutMe";
 
 export default function Home() {
   return (
-    <div>
-      <Hero/>
-      <About/>
+    <div className="max-w-[1600px]">
+      <div className="snap-y snap-mandatory h-screen scroll-smooth overflow-y-scroll px-4">
+            <section className="snap-center snap-always">
+              <Header/>
+            </section>
+            <div className="max-w-[1400px] lg:px-[20vh]">
+              <section className="h-screen pt-[10vh] snap-center snap-always"><Hero/></section>
+              <section className="h-screen pt-[10vh] snap-center snap-always"><HowItWorks/></section>
+              {/*
+              <section className="h-screen pt-[10vh] snap-center snap-always"><AboutMe/></section>
+              <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>
+              <section className="h-screen pt-[10vh] snap-center snap-always">Portfolio1</section>
+              <section className="h-screen pt-[10vh] snap-center snap-always">Portfolio2</section>
+              <section className="h-screen pt-[10vh] snap-center snap-always">Portfolio3</section>
+              <section className="h-screen pt-[10vh] snap-center snap-always">Opinie</section>
+              <section className="h-screen pt-[10vh] snap-center snap-always">Call To Action</section>
+              */}
+            </div>
+        </div>
     </div>
     /*
     <div className="text-accent">Hello World!

@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "next-themes";
-import Header from "@/components/Header";
+import Header from "@/components/homepage/Header";
 import { SessionProvider } from "next-auth/react";
 import { auth } from "@/auth";
 import { Toaster } from "@/components/ui/sonner";
+import Transition from "@/components/transition";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,9 +31,10 @@ export default  async function RootLayout({
             enableSystem
             disableTransitionOnChange
             >
-          <Header/>
           <Toaster/>
-          {children}
+          <Transition>
+            {children}
+          </Transition>
           </ThemeProvider>
         </body>
       </html>

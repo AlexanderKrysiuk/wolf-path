@@ -6,7 +6,8 @@
 export const publicRoutes = [
     "/",
     "/login",
-    "/auth/new-verification"
+    "/auth/new-verification",
+    "/homepage/hero"
 ];
 
 /**
