@@ -9,13 +9,15 @@ import AboutMe from "@/components/homepage/AboutMe";
 export default function Home() {
   return (
     <div className="max-w-[1600px]">
-      <div className="snap-y snap-mandatory h-screen scroll-smooth overflow-y-scroll px-4">
+      <div className="snap-y snap-mandatory h-screen scroll-smooth overflow-y-scroll">
             <section className="snap-center snap-always">
               <Header/>
+            
+                
             </section>
             <div className="max-w-[1400px] xl:px-[15vh] justify-center mx-auto">
-              <section className="h-screen pt-[10vh] snap-center snap-always"><Hero/></section>
-              <section className="h-screen pt-[10vh] snap-center snap-always"><HowItWorks/></section>
+              <section className="lg:h-screen pt-[10vh] snap-start snap-always"><Hero/></section>
+              <section className="lg:h-screen pt-[10vh] snap-start snap-always"><HowItWorks/></section>
               {/*
               <section className="h-screen pt-[10vh] snap-center snap-always"><AboutMe/></section>
               <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>

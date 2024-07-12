@@ -81,11 +81,40 @@ body,
     }
   }
 
+
   @layer base {
     * {
       @apply border-border;
     }
     body {
       @apply bg-background text-foreground;
+    }
+    p {
+      @apply text-base px-4 py-4; /* domyślny rozmiar tekstu */
+    }
+    @screen sm {
+      p {
+        @apply text-lg; /* większy tekst na małych ekranach */
+      }
+    }
+    @screen md {
+      p {
+        @apply text-2xl ; /* jeszcze większy tekst na średnich ekranach */
+      }
+    }
+    @screen lg {
+      p {
+        @apply text-xl; /* jeszcze większy tekst na dużych ekranach */
+      }
+    }
+    @screen xl {
+      p {
+        @apply text-2xl py-2; /* największy tekst na bardzo dużych ekranach */
+      }
+    }
+    @screen 2xl {
+      p {
+        @apply text-3xl py-4
+      }
     }
   }

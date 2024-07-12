@@ -7,43 +7,43 @@ import BookSessionButtons from "@/components/homepage/BookSessionButtons";
 const HowItWorks = () => {
     return ( 
         <div className="">
-            <div className="font-mjolnir flex text-xl md:text-4xl gap-x-4">
+            <div className="font-mjolnir flex text-xl md:text-4xl gap-x-2 px-4">
                 NA CZYM TO
                 <div className="text-green-500">
                     POLEGA?
                 </div>
             </div>
-            <p className="py-1 md:py-2 xl:py-4 text-sm md:text-2xl xl:text-xl">
+            <p>
                 Wszystko zaczyna się w naszej podświadomości. To ona zarządza naszym biciem serca, oddychaniem, wszystkimi innymi czynnościami fizjologicznymi. A także naszymi emocjami, zachowaniami, przekonaniami, programami, odruchami itd. itd.
             </p>
-            <p className="py-1 md:py-2 xl:py-4 text-sm md:text-2xl xl:text-xl">
+            <p>
                 I właśnie dlatego zmuszanie się do zmiany nawyków jest bardzo często nieskuteczne. Dlatego tez bardzo wiele osób stosujących afirmacje ma w pewnym momencie wrażenie, że one po prostu nie działają. Nieważne ile razy będziesz sobie powtarzać &quot;jestem milionerem, jestem milionerem&quot; albo &quot;od dziś nie jem ciastek, od dzisiaj nie jem ciastek&quot;. Jeśli Twoja podświadomość uzna to za kłamstwo, po prostu w to nie uwierzy i nie uwidoczni Ci tego w życiu.
             </p>
-            <p className="py-1 md:py-2 xl:py-4 text-sm md:text-2xl xl:text-xl">
+            <p>
                 Żeby zmiany miały efekt trwały, trzeba je zainstalować od środka. I właśnie na tym polega hipnoza, którą wykorzystuję w transformacji życia. To dosłownie zmiana oprogramowanie Twojej podświadomości. Poprzez hipnozę tworzymy nowe ścieżki neuronowe w mózgu, dzięki czemu zmiany w naszym życiu występują naturalnie w zgodzie z nami bez uczucia przymusu.
             </p>
-            <div className="grid grid-cols-3 gap-x-2 py-4">
-                <Card className="bg-secondary p-1 grid grid-cols-6">
-                    <div>
+            <div className="grid grid-rows-3 lg:grid-cols-3 p-2 gap-y-4 gap-x-2">
+                <Card className="bg-secondary p-2 grid grid-cols-6">
+                    <div className="w-3/4 h-3/4 m-auto">
                         <FiCheckCircle className="h-full w-full text-green-500 items-center"/>
                     </div>
-                    <div className="flex text-sm md:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
+                    <div className="flex xs:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
                         W Hipnozie tworzą się nowe ścieżki neuronowe.                    
                     </div>
                 </Card>
-                <Card className="bg-secondary p-1 xl:p-4 grid grid-cols-6">
-                    <div>
+                <Card className="bg-secondary p-2 xl:p-4 grid grid-cols-6">
+                    <div className="w-3/4 h-3/4 m-auto">
                         <FiCheckCircle className="h-full w-full text-green-500 items-center"/>
                     </div>
-                    <div className="flex text-sm md:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
+                    <div className="flex xs:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
                         Stanu hipnozy doświadcza każdy z nas.
                     </div>
                 </Card>
-                <Card className="bg-secondary p-1 grid grid-cols-6">
-                    <div>
+                <Card className="bg-secondary p-2 grid grid-cols-6">
+                    <div className="w-3/4 h-3/4 m-auto">
                         <FiCheckCircle className="h-full w-full text-green-500 items-center"/>
                     </div>
-                    <div className="flex text-sm md:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
+                    <div className="flex xs:text-2xl text-green-500 pl-4 font-bold items-center col-span-5">
                         Zmiany są naturalne zgodne z nami.                    
                     </div>
                 </Card>

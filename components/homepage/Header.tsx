@@ -6,24 +6,21 @@ import MenuButton from "@/components/homepage/sidebar/menubutton";
 
 const Header = () => {
     return (
-        <nav className="fixed">
-            <div className="justify-between flex items-center h-[10vh]">
-                <div className="items-center flex space-x-4">
-
-                 <div className="text-xl flex font-mjolnir items-center
-                 md:text-4xl
-                 ">
-                    
-                        WOLF
-                    
-                     <div className="text-green-500">
-                            PATH
+        <nav className="fixed w-full">
+            <div className="bg-background w-full">
+                <div className="justify-between flex items-center h-[10vh]">
+                    <div className="items-center flex space-x-4">
+                        <div className="text-xl px-2 flex font-mjolnir items-center gap-x-1 md:text-4xl">
+                            WOLF
+                            <div className="text-green-500">
+                                PATH
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className="hidden">
-                    <MenuButton/>
+                    <div className="hidden">
+                        <MenuButton/>
                     </div>
+                </div>
             </div>
         </nav>
     );
