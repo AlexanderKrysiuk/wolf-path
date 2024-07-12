@@ -118,3 +118,9 @@ body,
       }
     }
   }
+
+  @layer base {
+    .snap-custom {
+      scroll-snap-align: start end;
+    }
+  }

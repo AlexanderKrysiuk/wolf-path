@@ -10,14 +10,16 @@ export default function Home() {
   return (
     <div className="max-w-[1600px]">
       <div className="snap-y snap-mandatory h-screen scroll-smooth overflow-y-scroll">
-            <section className="snap-center snap-always">
+            <section>
               <Header/>
             
                 
             </section>
             <div className="max-w-[1400px] xl:px-[15vh] justify-center mx-auto">
-              <section className="lg:h-screen pt-[10vh] snap-start snap-always"><Hero/></section>
-              <section className="lg:h-screen pt-[10vh] snap-start snap-always"><HowItWorks/></section>
+              <section className="snap snap-always snap-start"/>
+              <section className="lg:h-screen pt-[10vh] pb-[20vh] snap-always snap-end"><Hero/></section>
+              <section className="snap snap-always snap-start"/>
+              <section className="lg:h-screen pt-[10vh] pb-[20vh] snap-always snap-end"><HowItWorks/></section>
               {/*
               <section className="h-screen pt-[10vh] snap-center snap-always"><AboutMe/></section>
               <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>
