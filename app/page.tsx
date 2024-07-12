@@ -16,10 +16,10 @@ export default function Home() {
                 
             </section>
             <div className="max-w-[1400px] xl:px-[15vh] justify-center mx-auto">
-              <section className="lg:h-screen pt-[10vh] pb-[20vh] snap-always snap-start"><Hero/></section>
-              <section className="snap-always snap-end"/>
-              <section className="lg:h-screen pt-[10vh] pb-[20vh] snap-always snap-start"><HowItWorks/></section>
-              <section className="snap-always snap-end"/>
+              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><Hero/></section>
+              <section className="py-[20vh] snap-always snap-end lg:py-0 lg:snap-none"/>
+              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><HowItWorks/></section>
+              <section className="py-[20vh] snap-always snap-end lg:py-0 lg:snap-none"/>
               {/*
               <section className="h-screen pt-[10vh] snap-center snap-always"><AboutMe/></section>
               <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>
