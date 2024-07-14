@@ -15,7 +15,7 @@ export default function Home() {
             
                 
             </section>
-            <div className="lg:px-[10vh] max-w-[1600px]">
+            <div className="lg:px-[10vh] max-w-[1600px] mx-auto">
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><Hero/></section>
               <section className="py-[5vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><HowItWorks/></section>
