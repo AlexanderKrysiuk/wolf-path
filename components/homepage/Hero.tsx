@@ -8,7 +8,7 @@ import BookSessionButtons from "@/components/homepage/BookSessionButtons";
 
 const Hero = () => {
     return (
-        <div className="snap-start">
+        <div>
             <div className="grid md:grid-cols-2">
                 <img
                     className="rounded-full w-1/2 md:w-full max-w-[500px] py-4 mx-auto md:order-1"

@@ -8,18 +8,18 @@ import AboutMe from "@/components/homepage/AboutMe";
 
 export default function Home() {
   return (
-    <div className="max-w-[1600px]">
-      <div className="snap-y snap-mandatory h-screen scroll-smooth overflow-y-scroll">
+    <div className="mx-auto">
+      <div className="h-screen snap-y snap-mandatory overflow-y-scroll mx-auto ">
             <section>
               <Header/>
             
                 
             </section>
-            <div className="max-w-[1400px] xl:px-[15vh] justify-center mx-auto">
+            <div className="lg:px-[10vh] max-w-[1600px]">
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><Hero/></section>
-              <section className="py-[20vh] snap-always snap-end lg:py-0 lg:snap-none"/>
+              <section className="py-[5vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><HowItWorks/></section>
-              <section className="py-[20vh] snap-always snap-end lg:py-0 lg:snap-none"/>
+              <section className="py-[5vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               {/*
               <section className="h-screen pt-[10vh] snap-center snap-always"><AboutMe/></section>
               <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>
@@ -28,16 +28,17 @@ export default function Home() {
               <section className="h-screen pt-[10vh] snap-center snap-always">Portfolio3</section>
               <section className="h-screen pt-[10vh] snap-center snap-always">Opinie</section>
               <section className="h-screen pt-[10vh] snap-center snap-always">Call To Action</section>
-              */}
+            */}
             </div>
         </div>
     </div>
-    /*
+  )
+    {/*
     <div className="text-accent">Hello World!
       <ModeToggle/>
     </div>
     
-    /*<main className="flex min-h-screen flex-col items-center justify-between p-24">
+    <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <div className="z-10 w-full max-w-5xl items-center justify-between font-mono text-sm lg:flex">
         <p className="fixed left-0 top-0 flex w-full justify-center border-b border-gray-300 bg-gradient-to-b from-zinc-200 pb-6 pt-8 backdrop-blur-2xl dark:border-neutral-800 dark:bg-zinc-800/30 dark:from-inherit lg:static lg:w-auto  lg:rounded-xl lg:border lg:bg-gray-200 lg:p-4 lg:dark:bg-zinc-800/30">
           Get started by editing&nbsp;
@@ -49,7 +50,7 @@ export default function Home() {
             href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
             target="_blank"
             rel="noopener noreferrer"
-          >
+            >
             By{" "}
             <Image
               src="/vercel.svg"
@@ -71,7 +72,7 @@ export default function Home() {
           width={180}
           height={37}
           priority
-        />
+          />
       </div>
 
       <div className="mb-32 grid text-center lg:mb-0 lg:w-full lg:max-w-5xl lg:grid-cols-4 lg:text-left">
@@ -80,7 +81,7 @@ export default function Home() {
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
-        >
+          >
           <h2 className="mb-3 text-2xl font-semibold">
             Docs{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -97,7 +98,7 @@ export default function Home() {
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
-        >
+          >
           <h2 className="mb-3 text-2xl font-semibold">
             Learn{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -114,7 +115,7 @@ export default function Home() {
           className="group rounded-lg border border-transparent px-5 py-4 transition-colors hover:border-gray-300 hover:bg-gray-100 hover:dark:border-neutral-700 hover:dark:bg-neutral-800/30"
           target="_blank"
           rel="noopener noreferrer"
-        >
+          >
           <h2 className="mb-3 text-2xl font-semibold">
             Templates{" "}
             <span className="inline-block transition-transform group-hover:translate-x-1 motion-reduce:transform-none">
@@ -143,6 +144,7 @@ export default function Home() {
           </p>
         </a>
       </div>
+    
     </main>*/
-  );
+  }
 }
