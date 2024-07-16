@@ -93,7 +93,7 @@ body,
       @apply text-base py-4; /* domyślny rozmiar tekstu */
     }
     span {
-      @apply text-lg
+      @apply text-lg gap-x-2
     }
     @screen sm {
       p {
@@ -108,7 +108,7 @@ body,
         @apply text-2xl ; /* jeszcze większy tekst na średnich ekranach */
       }
       span {
-        @apply text-3xl
+        @apply text-3xl gap-x-4
       }
     }
     @screen lg {
@@ -124,7 +124,7 @@ body,
         @apply text-2xl; /* największy tekst na bardzo dużych ekranach */
       }
       span {
-        @apply text-3xl
+        @apply text-3xl gap-x-6
       }
     }
     @screen 2xl {
@@ -132,7 +132,7 @@ body,
         @apply text-3xl py-8
       }
       span {
-        @apply text-5xl
+        @apply text-5xl gap-x-6
       }
     }
   }

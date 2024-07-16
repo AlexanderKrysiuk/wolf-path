@@ -7,7 +7,7 @@ import BookSessionButtons from "@/components/homepage/BookSessionButtons";
 const HowItWorks = () => {
     return ( 
         <div className="">
-            <span className="font-mjolnir flex gap-x-2">
+            <span className="font-mjolnir flex">
                 NA CZYM TO
                 <span className="text-green-500">
                     POLEGA?

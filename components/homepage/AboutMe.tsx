@@ -14,7 +14,7 @@ const AboutMe = () => {
                     </div>
                     <div className="lg:col-span-3">
                         <div className="lg:flex-row py-4">
-                            <span className="font-mjolnir flex gap-x-2">KIM
+                            <span className="font-mjolnir flex">KIM
                                 <span className="text-green-500">JESTEM?</span>
                             </span>
                             <p>
