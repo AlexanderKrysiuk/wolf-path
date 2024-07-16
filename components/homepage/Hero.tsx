@@ -16,12 +16,6 @@ const Hero = () => {
                     alt=""
                     />
             <div className="lg:grid">
-                <div className="text-xl flex mx-auto w-full pt-4 font-mjolnir gap-x-1 px-4 md:hidden">
-                    WOLF
-                    <div className="text-green-500">
-                        PATH    
-                    </div>
-                </div>
                 <p>
                 Zastanawiasz się, jak to by było, żyć życiem w pełni swoich możliwości? Życiem, które prowadzisz na własnych zasadach, w których realizujesz swoje zamierzone cele i marzenia? Życiem, w którym nic Cię nie blokuje. W którym idziesz pełną parą? W takim razie mam dla Ciebie fantastyczną wiadomość, jesteś na dobrej stronie.
                 </p>

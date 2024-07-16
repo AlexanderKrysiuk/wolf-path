@@ -15,13 +15,14 @@ export default function Home() {
             
                 
             </section>
-            <div className="lg:px-[10vh] max-w-[1600px] mx-auto">
+            <div className="px-[4vh] lg:px-[10vh] max-w-[1600px] mx-auto">
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><Hero/></section>
               <section className="py-[5vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><HowItWorks/></section>
               <section className="py-[5vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
+              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><AboutMe/></section>
+              <section className="py-[5vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               {/*
-              <section className="h-screen pt-[10vh] snap-center snap-always"><AboutMe/></section>
               <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>
               <section className="h-screen pt-[10vh] snap-center snap-always">Portfolio1</section>
               <section className="h-screen pt-[10vh] snap-center snap-always">Portfolio2</section>
