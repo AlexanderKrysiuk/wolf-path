@@ -23,9 +23,9 @@ export function ModeButton() {
   return (
     <Button variant="primary" size="icon" onClick={toggleTheme}>
       {theme === "light" ? (
-        <MoonIcon className="h-full w-full"/>
+        <MoonIcon className="h-full w-1/2"/>
       ) : (
-        <SunIcon className="h-full w-full"/>
+        <SunIcon className="h-full w-1/2"/>
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>
