@@ -5,6 +5,7 @@ import Hero from "@/components/homepage/Hero";
 import About from "@/components/About";
 import HowItWorks from "@/components/homepage/HowItWorks";
 import AboutMe from "@/components/homepage/AboutMe";
+import LetsStart from "@/components/homepage/LetsStart";
 
 export default function Home() {
   return (
@@ -21,6 +22,8 @@ export default function Home() {
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><HowItWorks/></section>
               <section className="py-[6vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               <section className="lg:h-screen pt-[10vh] snap-always snap-start"><AboutMe/></section>
+              <section className="py-[6vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
+              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><LetsStart/></section>
               <section className="py-[6vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               {/*
               <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>

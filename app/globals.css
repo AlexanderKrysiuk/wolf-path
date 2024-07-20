@@ -132,7 +132,7 @@ body,
         @apply text-3xl py-8
       }
       span {
-        @apply text-5xl gap-x-6
+        @apply text-4xl gap-x-6
       }
     }
   }
