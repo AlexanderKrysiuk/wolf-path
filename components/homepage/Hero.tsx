@@ -9,7 +9,7 @@ const Hero = () => {
         <div>
             <div className="grid md:grid-cols-2">
                 <img
-                    className="rounded-full w-1/2 md:w-full max-w-[500px] py-4 mx-auto md:order-1"
+                    className="rounded-full w-1/2 md:w-full max-w-[500px] mx-auto md:order-1"
                     src="/Images/Logo.png"
                     alt=""
                     />

@@ -3,6 +3,7 @@ import { ModeToggle } from "@/components/ModeSwitcher";
 import Sidebar from "@/components/homepage/sidebar/sidebar";
 import { motion } from "framer-motion" 
 import MenuButton from "@/components/homepage/sidebar/menubutton";
+import { ModeButton } from "../ModeButton";
 
 const Header = () => {
     return (
@@ -16,6 +17,9 @@ const Header = () => {
                                 PATH
                             </span>
                         </span>
+                    <div>
+                        <ModeButton/>   
+                    </div>
                     </div>
                     <div className="hidden">
                         <MenuButton/>
