@@ -93,7 +93,7 @@ body,
       @apply text-base py-4; /* domyślny rozmiar tekstu */
     }
     span {
-      @apply text-lg gap-x-2
+      @apply text-lg gap-x-2 pt-[1vh]
     }
     @screen sm {
       p {

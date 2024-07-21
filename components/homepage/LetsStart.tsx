@@ -7,9 +7,9 @@ const LetsStart = () => {
         <div>
             <span className="font-mjolnir flex">
                 TO CO,
-                <span className="text-green-500">
+                <div className="text-green-500">
                     ZACZYNAMY?
-                </span>
+                </div>
             </span>
             <div className="w-full lg:grid lg:grid-cols-2 lg:gap-x-8">
                 <Link href={LINKS.freeConsultation} passHref>

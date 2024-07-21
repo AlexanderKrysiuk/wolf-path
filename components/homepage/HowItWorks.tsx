@@ -9,9 +9,9 @@ const HowItWorks = () => {
         <div className="">
             <span className="font-mjolnir flex">
                 NA CZYM TO
-                <span className="text-green-500">
+                <div className="text-green-500">
                     POLEGA?
-                </span>
+                </div>
             </span>
             <p>
                 Wszystko zaczyna się w naszej podświadomości. To ona zarządza naszym biciem serca, oddychaniem, wszystkimi innymi czynnościami fizjologicznymi. A także naszymi emocjami, zachowaniami, przekonaniami, programami, odruchami itd. itd.

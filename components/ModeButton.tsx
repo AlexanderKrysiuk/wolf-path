@@ -21,11 +21,11 @@ export function ModeButton() {
   }
 
   return (
-    <Button variant="primary" size="icon" onClick={toggleTheme}>
+    <Button variant="linkable" size="icon" onClick={toggleTheme}>
       {theme === "light" ? (
-        <MoonIcon className="h-full w-1/2"/>
+        <MoonIcon/>
       ) : (
-        <SunIcon className="h-full w-1/2"/>
+        <SunIcon/>
       )}
       <span className="sr-only">Toggle theme</span>
     </Button>

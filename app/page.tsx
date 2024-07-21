@@ -1,6 +1,6 @@
 import { ModeToggle } from "@/components/ModeSwitcher";
 import Image from "next/image";
-import Header from "@/components/homepage/Header";
+import Header from "@/components/header/Header";
 import Hero from "@/components/homepage/Hero";
 import About from "@/components/About";
 import HowItWorks from "@/components/homepage/HowItWorks";
