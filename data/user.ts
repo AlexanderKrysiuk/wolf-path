@@ -17,3 +17,15 @@ export const getUserById = async (id: string) => {
         return null;
     }
 }
+
+export const getAdmins = async () => {
+    try {
+        const admins = await db.user.findMany({
+            where: { role: "ADMIN" },
+            select: { id: true, email: true },
+        });
+        return admins
+    } catch {
+        return null;
+    }
+}

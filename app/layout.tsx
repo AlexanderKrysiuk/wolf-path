@@ -33,7 +33,10 @@ export default  async function RootLayout({
             >
           <Toaster/>
           <Transition>
-            {children}
+            <Header/>
+            <div className="pt-[10vh]">
+              {children}
+            </div>
           </Transition>
           </ThemeProvider>
         </body>

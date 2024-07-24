@@ -10,20 +10,15 @@ import LetsStart from "@/components/homepage/LetsStart";
 export default function Home() {
   return (
     <div className="mx-auto">
-      <div className="h-screen snap-y snap-mandatory overflow-y-scroll mx-auto ">
-            <section>
-              <Header/>
-            
-                
-            </section>
+      <div className="h-[90vh] snap-y snap-mandatory overflow-y-scroll mx-auto ">                
             <div className="px-[4vw] lg:px-[10vh] max-w-[1600px] mx-auto">
-              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><Hero/></section>
+              <section className="lg:h-[90vh] snap-always snap-start"><Hero/></section>
               <section className="py-[6vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
-              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><HowItWorks/></section>
+              <section className="lg:h-[90vh] snap-always snap-start"><HowItWorks/></section>
               <section className="py-[6vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
-              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><AboutMe/></section>
+              <section className="lg:h-[90vh] snap-always snap-start"><AboutMe/></section>
               <section className="py-[6vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
-              <section className="lg:h-screen pt-[10vh] snap-always snap-start"><LetsStart/></section>
+              <section className="lg:h-[90vh] snap-always snap-start"><LetsStart/></section>
               <section className="py-[6vh] snap-always snap-end lg:py-0 lg:snap-none lg:snap-align-none"/>
               {/*
               <section className="h-screen pt-[10vh] snap-center snap-always">W czym mogę pomóc</section>
