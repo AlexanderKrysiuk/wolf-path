@@ -12,16 +12,48 @@ import { RiCloseLargeFill } from "react-icons/ri";
 const SettingsPage = () => {
     const [file, setFile] = useState<File>()
     const user = useCurrentUser()
+    console.log(user)
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!file) return
 
+        const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+        const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
+
+        if (!ALLOWED_TYPES.includes(file.type)) {
+            console.error("Wybierz plik, który jest zdjęciem!");
+            return;
+        }
+
+        if (file.size > MAX_FILE_SIZE) {
+            console.error("Zdjęcie jest za duże!");
+            return;
+        }
+
+        if (!user) {
+            return 
+        }
+
+        if (user.isOAuth) {
+            return
+        }
+
+        if (!user.id) {
+            return
+        }
+
+
         try {
             const data = new FormData()
             data.set('file', file)
+            data.set('user', JSON.stringify({
+                id: user.id,
+                isOAuth: user.isOAuth,
+                image: user.image
+            }))
 
-            const res = await fetch (`/api/upload`, {
+            const res = await fetch (`/api/avatar`, {
                 method: 'POST',
                 body: data
             })
