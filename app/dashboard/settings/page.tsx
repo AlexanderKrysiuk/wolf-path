@@ -10,38 +10,46 @@ import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { RiCloseLargeFill } from "react-icons/ri";
+import { LuCheckCircle, LuAlertTriangle} from "react-icons/lu";
+
 
 const SettingsPage = () => {
     const [file, setFile] = useState<File>()
+    const [result, setResult] = useState<{ success: Boolean, message: String } | null>(null)
     const user = useCurrentUser()
     const { update } = useSession()
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        if (!file) return
-
+        if (!file) {
+            setResult({ success: false, message: "Nie znaleziono pliku!"})
+            return
+        }
         const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
         const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
         if (!ALLOWED_TYPES.includes(file.type)) {
-            console.error("Wybierz plik, który jest zdjęciem!");
+            setResult({ success: false, message: "Wybierz plik, który jest zdjęciem!" });
             return;
         }
 
         if (file.size > MAX_FILE_SIZE) {
-            console.error("Zdjęcie jest za duże!");
+            setResult({ success: false, message: "Zdjęcie jest za duże!"})
             return;
         }
 
         if (!user) {
+            setResult({ success: false, message: "Nie znaleźiono użytkownika!"})
             return 
         }
 
         if (user.isOAuth) {
+            setResult({ success: false, message: "Użytkownik loguje się przez zewnętrznego providera!"})
             return
         }
 
         if (!user.id) {
+            setResult({ success: false, message: "Użytkownik nie ma ID!"})
             return
         }
 
@@ -63,9 +71,9 @@ const SettingsPage = () => {
             if (!res.ok) throw new Error(await res.text())
 
             const result = await res.json();
-            console.log(result)
             if(result.success){
                 update()
+                setResult({ success: result.success, message: result.message })
             }
 
         } catch (e: any) {
@@ -97,6 +105,7 @@ const SettingsPage = () => {
                         />
                         <input type="submit" value="upload"/>
                     </form>
+                    
 
                     {/*
                     <Dialog>
@@ -123,6 +132,16 @@ const SettingsPage = () => {
                         </DialogContent>
                     </Dialog>
                     */}
+                </div>
+                <div className="flex mx-auto justify-center">
+                {result && (
+                    <div className={`${result.success ? 'text-emerald-500' : 'text-red-500'}`}>
+                        <p className="flex items-center gap-x-[1vw]">
+                            {result.success ? <LuCheckCircle/> : <LuAlertTriangle/>}
+                            {result.message}
+                        </p>
+                    </div>
+                )}
                 </div>
             </CardContent>
         </Card>

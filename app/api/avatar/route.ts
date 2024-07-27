@@ -14,6 +14,17 @@ export async function POST(request: NextRequest) {
         return NextResponse.json({ success: false, message: "Musisz przesłać plik!"})
     }
 
+    const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+    const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
+    
+    if (!ALLOWED_TYPES.includes(file.type)) {
+        return NextResponse.json({ success: false, message: "Wybierz plik, który jest zdjęciem!" });
+    }
+
+    if (file.size > MAX_FILE_SIZE) {
+        return NextResponse.json({ success: false, message: "Zdjęcie jest za duże!"})
+    }
+
     const user = await getUserById(userData.id)
     if (!user) {
         return NextResponse.json({ success: false, message: "Nie znaleziono użytkownika!"})
@@ -21,7 +32,11 @@ export async function POST(request: NextRequest) {
 
     const userOAuth = await isUserOAuth(user.id)
     if (userOAuth) {
-        return NextResponse.json({ success: false, message: "Użytkownik loguje się przez providera!"})
+        return NextResponse.json({ success: false, message: "Użytkownik loguje się przez zewnętrznego providera!"})
+    }
+
+    if (!user.id) {
+        return NextResponse.json({ success: false, message: "Użytkownik nie ma ID!"})
     }
 
     //todo: extension image name and path to server
