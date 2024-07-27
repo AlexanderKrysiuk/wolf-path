@@ -1,4 +1,5 @@
 import { getUserById, isUserOAuth, updateUserImage } from "@/data/user";
+import getFileExtension from "@/lib/file";
 import { randomUUID } from "crypto";
 import { writeFile } from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
@@ -10,34 +11,42 @@ export async function POST(request: NextRequest) {
     const userData = JSON.parse(data.get('user') as string)
 
     if (!file) {
-        return NextResponse.json({ success: false})
+        return NextResponse.json({ success: false, message: "Musisz przesłać plik!"})
     }
 
     const user = await getUserById(userData.id)
     if (!user) {
-        return NextResponse.json({ result: false, message: "nie znaleziono użytkownika"})
+        return NextResponse.json({ success: false, message: "Nie znaleziono użytkownika!"})
     }
 
     const userOAuth = await isUserOAuth(user.id)
     if (userOAuth) {
-        return NextResponse.json({ result: false, message: "Użytkownik loguje się przez providera"})
+        return NextResponse.json({ success: false, message: "Użytkownik loguje się przez providera!"})
     }
 
     //todo: extension image name and path to server
-    let path: string | null = null;
+    const fileExtension = getFileExtension(file.name);
+    let FilePath: string | null = null;
+    let DataPath: string | null = null;
     if (!user.image) {
-        const randomFileName = `${randomUUID}_${file.name}`;
-        path = join('/', 'tmp', randomFileName)
+        const randomFileName = `${randomUUID()}${fileExtension}`;
+        FilePath = join(process.cwd(), 'public', 'Images', 'Avatars', randomFileName)
+        DataPath = join('/', 'Images', 'Avatars', randomFileName)
+        console.log(`FILEPATH: ${FilePath}`)
+        console.log(`FILEPATH: ${DataPath}`)
     } else {
-        path = user.image 
+        FilePath = join(process.cwd(), 'public', user.image)
+        DataPath = user.image
+        console.log(`FILEPATH: ${FilePath}`)
+        console.log(`FILEPATH: ${DataPath}`)
     }
 
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
 
-    await writeFile(path, buffer)
+    await writeFile(FilePath, buffer)
 
-    await updateUserImage(user.id, path)
+    await updateUserImage(user.id, DataPath)
 
-    return NextResponse.json({ success: true })
+    return NextResponse.json({ success: true, path: DataPath, message: "Avatar zmieniony!" })
 }

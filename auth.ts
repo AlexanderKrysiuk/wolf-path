@@ -50,6 +50,9 @@ export const {
             if (session.user) {
                 session.user.isOAuth = token.isOAuth as boolean;
             }
+            if (token.picture && session.user) {
+                session.user.image = token.picture
+            }
             return session;
         },
         async jwt({ token }) {
@@ -65,6 +68,7 @@ export const {
             token.role = existingUser.role;
             token.name = existingUser.name;
             token.email = existingUser.email;
+            token.picture = existingUser.image;
             return token;
         }
     },

@@ -4,7 +4,9 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Dialog, DialogClose, DialogDescription, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { useCurrentUser } from "@/hooks/use-current-user";
+import getFileExtension from "@/lib/file";
 import { DialogContent, DialogTrigger } from "@radix-ui/react-dialog";
+import { useSession } from "next-auth/react";
 import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { RiCloseLargeFill } from "react-icons/ri";
@@ -12,7 +14,7 @@ import { RiCloseLargeFill } from "react-icons/ri";
 const SettingsPage = () => {
     const [file, setFile] = useState<File>()
     const user = useCurrentUser()
-    console.log(user)
+    const { update } = useSession()
 
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -59,6 +61,13 @@ const SettingsPage = () => {
             })
             //handle the error
             if (!res.ok) throw new Error(await res.text())
+
+            const result = await res.json();
+            console.log(result)
+            if(result.success){
+                update()
+            }
+
         } catch (e: any) {
             console.error(e)
         }
