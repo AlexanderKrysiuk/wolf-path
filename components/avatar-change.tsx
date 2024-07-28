@@ -3,14 +3,23 @@ import { useState } from "react";
 import { Button } from "./ui/button";
 import { Input } from "./ui/input";
 import { useCurrentUser } from "@/hooks/use-current-user";
-import { Card, CardHeader, CardTitle } from "./ui/card";
+import { Card, CardContent, CardHeader, CardTitle } from "./ui/card";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { LuAlertTriangle, LuCheckCircle } from "react-icons/lu";
+import ReactCrop, { centerCrop, makeAspectCrop, type Crop } from 'react-image-crop'
+
+import "react-image-crop/dist/ReactCrop.css"
+
+const ASPECT_RATIO = 1;
+const MIN_DIMENSION = 50;
 
 const AvatarChange = () => {
     const [file, setFile] = useState<File | undefined>(undefined)
     const [modal, setModal] = useState<boolean>(false)
     const [result, setResult] = useState<{ success: boolean, message: string } | null>(null);
+    const [imgSrc, setImgSrc] = useState('')
+    const [crop, setCrop] = useState<Crop>()
+
     const user = useCurrentUser()
 
 
@@ -55,8 +64,8 @@ const AvatarChange = () => {
 
     const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
         const selectedFile = e.target.files?.[0]
-        if (selectedFile) {
-            console.log(selectedFile)
+        if (!selectedFile) {
+            return
         }
         setResult(null)
         const isValid = validate(selectedFile)
@@ -64,9 +73,32 @@ const AvatarChange = () => {
             setModal(false)
             return
         }
+        const reader = new FileReader();
+        reader.addEventListener("load", () => {
+            const imageUrl = reader.result?.toString() || "";
+            console.log(imageUrl)
+            setImgSrc(imageUrl)
+        })
+        reader.readAsDataURL(selectedFile)
         setModal(true)
-
     }
+
+    const onImageLoad = (e: React.SyntheticEvent<HTMLImageElement>) => {
+        const {width, height} = e.currentTarget
+        const initialCrop = makeAspectCrop(
+            {
+                unit: "px",
+                width: MIN_DIMENSION
+            }, 
+            ASPECT_RATIO,
+            width,
+            height
+        )
+        const centeredCrop = centerCrop(initialCrop, width, height)
+        setCrop(centeredCrop);
+    }
+
+
     return (
         <div>
             <input 
@@ -82,18 +114,30 @@ const AvatarChange = () => {
                         <CardHeader>
                             <CardTitle className="flex justify-between gap-x-4">
                             <Button onClick={handleButtonClick}>Zmień Avatara</Button>
-                            {/*
-                            <input 
-                                id="fileInput"
-                                type="file"
-                                style={{ display: 'none' }}
-                                onChange={handleFileChange}
-                            />
-            */}
                                 <Button onClick={() => setModal(false)}>
                                     <RiCloseLargeFill/>
                                 </Button>
                             </CardTitle>
+                            <CardContent>
+                                {imgSrc && 
+                                    <div className="flex flex-col items-center">
+                                        <ReactCrop
+                                            crop={crop}
+                                            circularCrop
+                                            keepSelection
+                                            aspect={ASPECT_RATIO}
+                                            minWidth={MIN_DIMENSION}   
+                                            onChange={c => setCrop(c)} 
+                                        >
+                                            <img src={imgSrc} alt=""
+                                                style={{maxHeight:"70vh"}}
+                                                onLoad={onImageLoad}
+                                            />
+
+                                        </ReactCrop>
+                                    </div>
+                                }
+                            </CardContent>
                         </CardHeader>
                     </Card>
                 </div>
