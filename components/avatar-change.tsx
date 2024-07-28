@@ -87,7 +87,7 @@ const AvatarChange = () => {
         const {width, height} = e.currentTarget
         const initialCrop = makeAspectCrop(
             {
-                unit: "px",
+                unit: "%",
                 width: MIN_DIMENSION
             }, 
             ASPECT_RATIO,
@@ -127,7 +127,10 @@ const AvatarChange = () => {
                                             keepSelection
                                             aspect={ASPECT_RATIO}
                                             minWidth={MIN_DIMENSION}   
-                                            onChange={c => setCrop(c)} 
+                                            //onChange={c => setCrop(c)}
+                                            onChange={
+                                                (pixelCrop, percentCrop) => setCrop(percentCrop)
+                                            }
                                         >
                                             <img src={imgSrc} alt=""
                                                 style={{maxHeight:"70vh"}}
