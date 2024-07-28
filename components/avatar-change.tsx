@@ -1,0 +1,116 @@
+"use client"
+import { useState } from "react";
+import { Button } from "./ui/button";
+import { Input } from "./ui/input";
+import { useCurrentUser } from "@/hooks/use-current-user";
+import { Card, CardHeader, CardTitle } from "./ui/card";
+import { RiCloseLargeFill } from "react-icons/ri";
+import { LuAlertTriangle, LuCheckCircle } from "react-icons/lu";
+
+const AvatarChange = () => {
+    const [file, setFile] = useState<File | undefined>(undefined)
+    const [modal, setModal] = useState<boolean>(false)
+    const [result, setResult] = useState<{ success: boolean, message: string } | null>(null);
+    const user = useCurrentUser()
+
+
+    const handleButtonClick = () => {
+        document.getElementById('fileInput')?.click();
+      };
+
+    const validate = (selectedFile: File | undefined) => {
+        if (!selectedFile) {
+            setResult({ success: false, message: "Nie znaleziono pliku!"});
+            return false
+        }
+        //console.log(file)
+        const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
+        const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
+        
+        if (!ALLOWED_TYPES.includes(selectedFile.type)) {
+            setResult({ success: false, message: "Wybierz plik, który jest zdjęciem!" });
+            return false
+        }
+
+        if (selectedFile.size > MAX_FILE_SIZE) {
+            setResult({ success: false, message: "Zdjęcie jest za duże!"})
+            return false  
+        }
+
+        if (!user) {
+            setResult({ success: false, message: "Nie znaleźiono użytkownika!"})
+            return false  
+        }
+
+        if (user.isOAuth) {
+            setResult({ success: false, message: "Użytkownik loguje się przez zewnętrznego providera!"})
+            return false
+        }
+        if (!user.id) {
+            setResult({ success: false, message: "Użytkownik nie ma ID!"})
+            return false 
+        }
+        return true
+    }
+
+    const handleFileChange = async (e: React.ChangeEvent<HTMLInputElement>) => {
+        const selectedFile = e.target.files?.[0]
+        if (selectedFile) {
+            console.log(selectedFile)
+        }
+        setResult(null)
+        const isValid = validate(selectedFile)
+        if (!isValid) {
+            setModal(false)
+            return
+        }
+        setModal(true)
+
+    }
+    return (
+        <div>
+            <input 
+                id="fileInput"
+                type="file"
+                style={{ display: 'none' }}
+                onChange={handleFileChange}
+            />
+            <Button onClick={handleButtonClick}>Zmień Avatara</Button>
+            {modal && (
+                <div className="fixed z-50 inset-0 flex items-center bg-black bg-opacity-50 justify-center">
+                    <Card className="bg-background p-[4vw] max-w-[1200px]">
+                        <CardHeader>
+                            <CardTitle className="flex justify-between gap-x-4">
+                            <Button onClick={handleButtonClick}>Zmień Avatara</Button>
+                            {/*
+                            <input 
+                                id="fileInput"
+                                type="file"
+                                style={{ display: 'none' }}
+                                onChange={handleFileChange}
+                            />
+            */}
+                                <Button onClick={() => setModal(false)}>
+                                    <RiCloseLargeFill/>
+                                </Button>
+                            </CardTitle>
+                        </CardHeader>
+                    </Card>
+                </div>
+            )}
+            <div className="flex mx-auto justify-center">
+                {result && (
+                    <div className={`${result.success ? 'text-emerald-500' : 'text-red-500'}`}>
+                        <p className="flex items-center gap-x-[1vw]">
+                            {result.success ? <LuCheckCircle/> : <LuAlertTriangle/>}
+                            {result.message}
+                        </p>
+                    </div>
+                )}
+            </div>
+        </div>
+
+    );
+}
+ 
+export default AvatarChange;

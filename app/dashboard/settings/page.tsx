@@ -11,49 +11,66 @@ import React, { useState } from "react";
 import { FaUser } from "react-icons/fa";
 import { RiCloseLargeFill } from "react-icons/ri";
 import { LuCheckCircle, LuAlertTriangle} from "react-icons/lu";
+import { Input } from "@/components/ui/input";
+import AvatarChange from "@/components/avatar-change";
+
 
 
 const SettingsPage = () => {
     const [file, setFile] = useState<File>()
     const [result, setResult] = useState<{ success: Boolean, message: String } | null>(null)
+    const [modal, setModal] = useState<boolean>(false)
     const user = useCurrentUser()
     const { update } = useSession()
 
+    const onChange = async (e: React.FormEvent<HTMLFormElement>) => {
+
+    }
     const onSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         if (!file) {
-            setResult({ success: false, message: "Nie znaleziono pliku!"})
-            return
+            return setResult({ success: false, message: "Nie znaleziono pliku!"});
         }
         const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
         const ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/gif'];
 
         if (!ALLOWED_TYPES.includes(file.type)) {
-            setResult({ success: false, message: "Wybierz plik, który jest zdjęciem!" });
-            return;
+            return setResult({ success: false, message: "Wybierz plik, który jest zdjęciem!" });;
         }
 
         if (file.size > MAX_FILE_SIZE) {
-            setResult({ success: false, message: "Zdjęcie jest za duże!"})
-            return;
+            return setResult({ success: false, message: "Zdjęcie jest za duże!"})
+
         }
 
         if (!user) {
-            setResult({ success: false, message: "Nie znaleźiono użytkownika!"})
-            return 
+            return setResult({ success: false, message: "Nie znaleźiono użytkownika!"})
         }
 
         if (user.isOAuth) {
-            setResult({ success: false, message: "Użytkownik loguje się przez zewnętrznego providera!"})
-            return
+            return setResult({ success: false, message: "Użytkownik loguje się przez zewnętrznego providera!"})
+            
         }
 
         if (!user.id) {
-            setResult({ success: false, message: "Użytkownik nie ma ID!"})
-            return
+            return setResult({ success: false, message: "Użytkownik nie ma ID!"})
         }
 
+        <Dialog>
+            <DialogContent>
+                <div className="fixed z-50 inset-0 flex items-center bg-black bg-opacity-50 justify-center">
+                    <Card className="bg-background p-[4vw] max-w-[1200px]">
+                        <DialogHeader>
+                            <DialogTitle className="flex justify-between gap-x-4">
+                                <DialogClose/>
+                            </DialogTitle>
+                        </DialogHeader>
+                    </Card>
+                </div>
+            </DialogContent>
+        </Dialog>
 
+        {/*
         try {
             const data = new FormData()
             data.set('file', file)
@@ -79,6 +96,7 @@ const SettingsPage = () => {
         } catch (e: any) {
             console.error(e)
         }
+        */}
     }
 
     return (
@@ -94,9 +112,16 @@ const SettingsPage = () => {
                             <FaUser/>
                         </AvatarFallback>
                     </Avatar>
-                    <Button>
-                        Zmień Avatar
-                    </Button>
+                    {/*
+                            <Input
+                                placeholder="Zmień Avatar"
+                                type="file"
+                                onClick={() => setModal(true)}
+                            />
+                    */}
+                    <AvatarChange/>
+                    
+
                     <form onSubmit={onSubmit}>
                         <input
                             type="file"
