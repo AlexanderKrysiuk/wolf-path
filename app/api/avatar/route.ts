@@ -56,13 +56,14 @@ export async function POST(request: NextRequest) {
         // FilePath = join(process.cwd(), 'public', 'Images', 'Avatars', randomFileName)
         // DataPath = join('/', 'Images', 'Avatars', randomFileName)
         // Production
-        path = join('/', domain, 'Images', 'Avatars', randomFileName)
+        path = join(process.cwd(), 'Images', 'Avatars', randomFileName)
     } else {
         // Development
         // FilePath = join(process.cwd(), 'public', user.image)
         // DataPath = user.image
         path = user.image 
     }
+    //console.log(path)
 
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)

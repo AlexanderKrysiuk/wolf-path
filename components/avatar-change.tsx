@@ -9,6 +9,7 @@ import { LuAlertTriangle, LuCheckCircle } from "react-icons/lu";
 import ReactCrop, { centerCrop, convertToPixelCrop, makeAspectCrop, type Crop } from 'react-image-crop'
 
 import "react-image-crop/dist/ReactCrop.css"
+import { randomUUID } from "crypto";
 
 const ASPECT_RATIO = 1;
 const MIN_DIMENSION = 100;
@@ -173,7 +174,8 @@ const AvatarChange = () => {
 
     const saveAvatarToDatabase = async (avatarURL) => {
         try {
-            const newAvatar = convertDataURLtoFile(avatarURL, 'obraz')
+            const randomFileName = randomUUID()
+            const newAvatar = convertDataURLtoFile(avatarURL, randomFileName)
             const formData = new FormData();
             formData.set('image', newAvatar)
             formData.set('userID', JSON.stringify(user.id))
