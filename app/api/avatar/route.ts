@@ -41,8 +41,6 @@ export async function POST(request: NextRequest) {
     if (userOAuth) {
         return NextResponse.json({ success: false, message: "Użytkownik loguje się przez zewnętrznego providera!"})
     }
-
-
     //todo: extension image name and path to server
     // const fileExtension = getFileExtension(file.name);
     // Development
@@ -50,6 +48,7 @@ export async function POST(request: NextRequest) {
     // let DataPath: string | null = null;
     // Production
     let path: string | null = null;
+    const domain = process.env.NEXT_PUBLIC_APP_URL;
 
     if (!user.image) {
         const randomFileName = `${randomUUID()}`;
@@ -57,7 +56,7 @@ export async function POST(request: NextRequest) {
         // FilePath = join(process.cwd(), 'public', 'Images', 'Avatars', randomFileName)
         // DataPath = join('/', 'Images', 'Avatars', randomFileName)
         // Production
-        path = join(process.cwd(), 'Images', 'Avatars', randomFileName)
+        path = join('/', domain, 'Images', 'Avatars', randomFileName)
     } else {
         // Development
         // FilePath = join(process.cwd(), 'public', user.image)
