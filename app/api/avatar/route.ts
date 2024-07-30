@@ -45,24 +45,36 @@ export async function POST(request: NextRequest) {
 
     //todo: extension image name and path to server
     // const fileExtension = getFileExtension(file.name);
-    let FilePath: string | null = null;
-    let DataPath: string | null = null;
+    // Development
+    // let FilePath: string | null = null;
+    // let DataPath: string | null = null;
+    // Production
+    let path: string | null = null;
 
     if (!user.image) {
         const randomFileName = `${randomUUID()}`;
-        FilePath = join(process.cwd(), 'public', 'Images', 'Avatars', randomFileName)
-        DataPath = join('/', 'Images', 'Avatars', randomFileName)
+        // Development
+        // FilePath = join(process.cwd(), 'public', 'Images', 'Avatars', randomFileName)
+        // DataPath = join('/', 'Images', 'Avatars', randomFileName)
+        // Production
+        path = join(process.cwd(), 'Images', 'Avatars', randomFileName)
     } else {
-        FilePath = join(process.cwd(), 'public', user.image)
-        DataPath = user.image
+        // Development
+        // FilePath = join(process.cwd(), 'public', user.image)
+        // DataPath = user.image
+        path = user.image 
     }
 
     const bytes = await file.arrayBuffer()
     const buffer = Buffer.from(bytes)
+    // console.log(`FILEPATH: ${FilePath}`)
+    // console.log(`DATAPATH: ${DataPath}`)
 
-    await writeFile(FilePath, buffer)
-    await updateUserImage(user.id, DataPath)
-
-    await updateUserImage(user.id, DataPath)
+    // Development
+    // await writeFile(FilePath, buffer)
+    // await updateUserImage(user.id, DataPath)
+    // Production
+    await writeFile(path, buffer)
+    await updateUserImage(user.id, path)
     return NextResponse.json({ success: true, message: "Avatar zmieniony!" })
 }
