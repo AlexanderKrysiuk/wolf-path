@@ -18,7 +18,6 @@ export async function POST(
         
         return NextResponse.json(product)
     } catch (error) {
-        console.log("[PRODUCT]", error)
         return new NextResponse("Wewnętrzny Błąd", { status: 500 })
     }
 }

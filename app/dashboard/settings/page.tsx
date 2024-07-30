@@ -112,61 +112,7 @@ const SettingsPage = () => {
                             <FaUser/>
                         </AvatarFallback>
                     </Avatar>
-                    {/*
-                            <Input
-                                placeholder="Zmień Avatar"
-                                type="file"
-                                onClick={() => setModal(true)}
-                            />
-                    */}
                     <AvatarChange/>
-                    
-
-                    <form onSubmit={onSubmit}>
-                        <input
-                            type="file"
-                            name="file"
-                            onChange={(e) => setFile(e.target.files?.[0])}
-                        />
-                        <input type="submit" value="upload"/>
-                    </form>
-                    
-
-                    {/*
-                    <Dialog>
-                        <DialogTrigger>                            
-                                Zmień Avatar
-                        </DialogTrigger>
-                        <DialogContent>
-                            <div className="fixed z-50 inset-0 flex items-center bg-black bg-opacity-50 justify-center">
-                                <Card className="p-[4vw] max-w-[600px]">
-                                <DialogTitle>
-                                    <span className="flex items-center justify-between">
-                                        
-                                        Prześlij Plik
-                                        <DialogClose>
-                                            <RiCloseLargeFill/>
-                                        </DialogClose>
-                                    </span>
-                                </DialogTitle>
-                                Prześlij plik
-                                
-                                </Card>
-
-                            </div>
-                        </DialogContent>
-                    </Dialog>
-                    */}
-                </div>
-                <div className="flex mx-auto justify-center">
-                {result && (
-                    <div className={`${result.success ? 'text-emerald-500' : 'text-red-500'}`}>
-                        <p className="flex items-center gap-x-[1vw]">
-                            {result.success ? <LuCheckCircle/> : <LuAlertTriangle/>}
-                            {result.message}
-                        </p>
-                    </div>
-                )}
                 </div>
             </CardContent>
         </Card>
