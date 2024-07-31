@@ -6,6 +6,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { join } from "path";
 import * as ftp from "basic-ftp";
 import { Readable } from "stream";
+import { unlink } from "fs/promises";
 
 export async function POST(request: NextRequest) {
     const data = await request.formData()
@@ -49,37 +50,44 @@ export async function POST(request: NextRequest) {
     // let FilePath: string | null = null;
     // let DataPath: string | null = null;
     // Production
-    let FilePath: string | null = '';
-    let DataPath: string | null = '';
-    let FullFileName: string | null = '';
     const domain = process.env.NEXT_PUBLIC_APP_URL;
-    if (!user.image) {
-        const FileName = uuidv4()
-        const FullFileName = `${FileName}.png`
+    const FileName = uuidv4()
+    const FullFileName = `${FileName}.png`;
         // Development
         // FilePath = join(process.cwd(), 'public', 'Images', 'Avatars', randomFileName)
         // DataPath = join('/', 'Images', 'Avatars', randomFileName)
         // Production
         // path = join(process.cwd(), 'Images', 'Avatars', randomFileName)
         //path = join(`www.wolf-path.pl/Images/Avatars/${randomFileName}`)
-    } else {
-        const existingAvatarName = user.image.split('/').pop();
-        const FileName = existingAvatarName.split('.')[0];
-        const FullFileName = `${FileName}.png`;
+    //} else {
+        
+
+    //    const FullFileName = `${FileName}.png`
         // Development
         // FilePath = join(process.cwd(), 'public', user.image)
         // DataPath = user.image
         //path = user.image 
-    }
+    //}
     //console.log(path)
     //console.log(path)
     //const client = new ftp.Client();
     //client.ftp.verbose = true;
     const dirPath = join('public', 'Images', 'Avatars');
-    FilePath = join(dirPath, FullFileName)
-    DataPath = join(domain, 'Images', 'Avatars', FullFileName)
-    
-    
+    const FilePath = join(dirPath, FullFileName)
+    const DataPathURL = new URL('/Images/Avatars/' + FullFileName, domain);
+    const DataPath = DataPathURL.toString()
+    if (user.image) {
+        const existingAvatarName = user.image.split('/').pop();
+        const oldFileName = existingAvatarName.split('.')[0];
+        const fullOldFileName = `${oldFileName}.png`
+        const oldFilePath = join(dirPath, fullOldFileName)
+        console.log("OLDFILEPATH: ", fullOldFileName)
+        await unlink(oldFilePath)
+    }
+    console.log(user)
+    console.log("FILEPATH: ", FilePath)
+    console.log("DATAPATH: ", DataPath)
+
     await mkdir(dirPath, { recursive: true }); // Używamy { recursive: true }, aby utworzyć foldery w razie potrzeby
     const buffer = Buffer.from(await file.arrayBuffer());
     await writeFile(FilePath, buffer);
