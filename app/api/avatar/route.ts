@@ -84,12 +84,9 @@ export async function POST(request: NextRequest) {
     const client = new ftp.Client();
     client.ftp.verbose = true;
     await client.access({
-        //host: env.FTP_HOST,
-        host: "maestro.atthost24.pl",
-        //user: process.env.FTP_USER,
-        user: "maestro_wolfpath_FTP",
-        //password: process.env.FTP_PASS,
-        password: "Md1!00M5VJ*71",
+        host: process.env.FTP_HOST,
+        user: process.env.FTP_USER,
+        password: process.env.FTP_PASS,
         secure: false,
     });
     
