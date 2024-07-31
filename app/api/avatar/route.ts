@@ -51,6 +51,7 @@ export async function POST(request: NextRequest) {
     // let DataPath: string | null = null;
     // Production
     const domain = process.env.NEXT_PUBLIC_APP_URL;
+    const fileServer = process.env.FILE_SERVER_URL;
     const FileName = uuidv4()
     const FullFileName = `${FileName}.png`;
         // Development
@@ -70,29 +71,41 @@ export async function POST(request: NextRequest) {
     //}
     //console.log(path)
     //console.log(path)
-    //const client = new ftp.Client();
-    //client.ftp.verbose = true;
-    const dirPath = join('public', 'Images', 'Avatars');
-    const FilePath = join(dirPath, FullFileName)
-    const DataPathURL = new URL('/Images/Avatars/' + FullFileName, domain);
+    
+    
+    const dirPath = join('images', 'avatars');
+    const DataPathURL = new URL('/wolfpath/images/avatars/' + FullFileName, fileServer);
     const DataPath = DataPathURL.toString()
+    console.log(user)
+    console.log("DATAPATH: ", DataPath)
+    
+    const client = new ftp.Client();
+    client.ftp.verbose = true;
+    await client.access({
+        host: process.env.FTP_HOST,
+        user: process.env.FTP_USER,
+        password: process.env.FTP_PASS,
+        secure: false,
+    });
+    
+    const arrayBuffer = await file.arrayBuffer();
+    const fileStream = Readable.from(Buffer.from(arrayBuffer));
+    
+    await client.ensureDir(dirPath)
+    await client.uploadFrom(fileStream, FullFileName);
     if (user.image) {
         const existingAvatarName = user.image.split('/').pop();
         const oldFileName = existingAvatarName.split('.')[0];
         const fullOldFileName = `${oldFileName}.png`
-        const oldFilePath = join(dirPath, fullOldFileName)
-        console.log("OLDFILEPATH: ", fullOldFileName)
-        await unlink(oldFilePath)
+        await client.remove(fullOldFileName);
     }
-    console.log(user)
-    console.log("FILEPATH: ", FilePath)
-    console.log("DATAPATH: ", DataPath)
-
-    await mkdir(dirPath, { recursive: true }); // Używamy { recursive: true }, aby utworzyć foldery w razie potrzeby
-    const buffer = Buffer.from(await file.arrayBuffer());
-    await writeFile(FilePath, buffer);
     await updateUserImage(user.id, DataPath)
-
+    client.close()
+    
+    // await mkdir(dirPath, { recursive: true }); // Używamy { recursive: true }, aby utworzyć foldery w razie potrzeby
+    // await writeFile(FilePath, fileStream);
+    //await updateUserImage(user.id, DataPath)
+    
     // const bytes = await file.arrayBuffer()
     // const buffer = Buffer.from(bytes)
     // console.log(`FILEPATH: ${FilePath}`)
@@ -103,6 +116,5 @@ export async function POST(request: NextRequest) {
     // await updateUserImage(user.id, DataPath)
     // Production
      //await writeFile(path, buffer)
-    //await updateUserImage(user.id, remotePath)
     return NextResponse.json({ success: true, message: "Avatar zmieniony!" })
 }
