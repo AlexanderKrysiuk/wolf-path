@@ -7,6 +7,7 @@ import { join } from "path";
 import * as ftp from "basic-ftp";
 import { Readable } from "stream";
 import { unlink } from "fs/promises";
+import { env } from "process";
 
 export async function POST(request: NextRequest) {
     const data = await request.formData()
@@ -51,7 +52,8 @@ export async function POST(request: NextRequest) {
     // let DataPath: string | null = null;
     // Production
     const domain = process.env.NEXT_PUBLIC_APP_URL;
-    const fileServer = process.env.FILE_SERVER_URL;
+    //const fileServer = process.env.FILE_SERVER_URL;
+    const fileServer = 'http://maestro.atthost24.pl'
     const FileName = uuidv4()
     const FullFileName = `${FileName}.png`;
         // Development
@@ -82,9 +84,15 @@ export async function POST(request: NextRequest) {
     const client = new ftp.Client();
     client.ftp.verbose = true;
     await client.access({
-        host: process.env.FTP_HOST,
-        user: process.env.FTP_USER,
-        password: process.env.FTP_PASS,
+        //host: env.FTP_HOST,
+        host: "maestro.atthost24.pl",
+        
+        //user: process.env.FTP_USER,
+        user: "maestro_wolfpath_FTP",
+
+        //password: process.env.FTP_PASS,
+        password: "Md1!00M5VJ*71",
+
         secure: false,
     });
     
