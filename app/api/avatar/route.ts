@@ -52,8 +52,7 @@ export async function POST(request: NextRequest) {
     // let DataPath: string | null = null;
     // Production
     const domain = process.env.NEXT_PUBLIC_APP_URL;
-    //const fileServer = process.env.FILE_SERVER_URL;
-    const fileServer = 'http://maestro.atthost24.pl'
+    const fileServer = process.env.FILE_SERVER_URL;
     const FileName = uuidv4()
     const FullFileName = `${FileName}.png`;
         // Development
