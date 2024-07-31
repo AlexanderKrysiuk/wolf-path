@@ -1,9 +1,11 @@
 import { getUserById, isUserOAuth, updateUserImage } from "@/data/user";
 import getFileExtension from "@/lib/file";
-import { randomUUID } from "crypto";
-import { writeFile } from "fs/promises";
+import { v4 as uuidv4 } from 'uuid';
+import { writeFile, mkdir} from "fs/promises";
 import { NextRequest, NextResponse } from "next/server";
 import { join } from "path";
+import * as ftp from "basic-ftp";
+import { Readable } from "stream";
 
 export async function POST(request: NextRequest) {
     const data = await request.formData()
@@ -47,26 +49,44 @@ export async function POST(request: NextRequest) {
     // let FilePath: string | null = null;
     // let DataPath: string | null = null;
     // Production
-    let path: string | null = null;
+    let FilePath: string | null = '';
+    let DataPath: string | null = '';
+    let FullFileName: string | null = '';
     const domain = process.env.NEXT_PUBLIC_APP_URL;
-
     if (!user.image) {
-        const randomFileName = `${randomUUID()}`;
+        const FileName = uuidv4()
+        const FullFileName = `${FileName}.png`
         // Development
         // FilePath = join(process.cwd(), 'public', 'Images', 'Avatars', randomFileName)
         // DataPath = join('/', 'Images', 'Avatars', randomFileName)
         // Production
-        path = join(process.cwd(), 'Images', 'Avatars', randomFileName)
+        // path = join(process.cwd(), 'Images', 'Avatars', randomFileName)
+        //path = join(`www.wolf-path.pl/Images/Avatars/${randomFileName}`)
     } else {
+        const existingAvatarName = user.image.split('/').pop();
+        const FileName = existingAvatarName.split('.')[0];
+        const FullFileName = `${FileName}.png`;
         // Development
         // FilePath = join(process.cwd(), 'public', user.image)
         // DataPath = user.image
-        path = user.image 
+        //path = user.image 
     }
     //console.log(path)
+    //console.log(path)
+    //const client = new ftp.Client();
+    //client.ftp.verbose = true;
+    const dirPath = join('public', 'Images', 'Avatars');
+    FilePath = join(dirPath, FullFileName)
+    DataPath = join(domain, 'Images', 'Avatars', FullFileName)
+    
+    
+    await mkdir(dirPath, { recursive: true }); // Używamy { recursive: true }, aby utworzyć foldery w razie potrzeby
+    const buffer = Buffer.from(await file.arrayBuffer());
+    await writeFile(FilePath, buffer);
+    await updateUserImage(user.id, DataPath)
 
-    const bytes = await file.arrayBuffer()
-    const buffer = Buffer.from(bytes)
+    // const bytes = await file.arrayBuffer()
+    // const buffer = Buffer.from(bytes)
     // console.log(`FILEPATH: ${FilePath}`)
     // console.log(`DATAPATH: ${DataPath}`)
 
@@ -74,7 +94,7 @@ export async function POST(request: NextRequest) {
     // await writeFile(FilePath, buffer)
     // await updateUserImage(user.id, DataPath)
     // Production
-    await writeFile(path, buffer)
-    await updateUserImage(user.id, path)
+     //await writeFile(path, buffer)
+    //await updateUserImage(user.id, remotePath)
     return NextResponse.json({ success: true, message: "Avatar zmieniony!" })
 }
