@@ -11,15 +11,10 @@ import {
     DropdownMenuItem,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu"
-
-import {
-    Avatar,
-    AvatarImage,
-    AvatarFallback
-} from "@/components/ui/avatar";
 import { useCurrentUser } from "@/hooks/use-current-user";
 import { LogOutButton } from "@/components/auth/logout-button";
 import Link from "next/link";
+import Avatar from "@/components/avatar";
 
 export const UserButton = () => {
     const user = useCurrentUser();
@@ -29,12 +24,9 @@ export const UserButton = () => {
     return(
         <DropdownMenu>
             <DropdownMenuTrigger>
-                <Avatar>
-                    <AvatarImage src={user?.image || ""} />
-                    <AvatarFallback>
-                        <FaUser/>
-                    </AvatarFallback>
-                </Avatar>
+                <div className="w-[6vh] h-[6vh] transition-bg duration-300 hover:ring-[1vh] hover:ring-emerald-500 rounded-full items-center justify-center flex">
+                        <Avatar />
+                </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40" align="end">
                 {isAdmin && (<DropdownMenuItem>

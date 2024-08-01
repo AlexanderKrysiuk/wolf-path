@@ -6,7 +6,7 @@ const StartComponent = async () => {
     const session = await auth();
 
     if (session) {
-        return <div><UserButton/></div>
+        return <div className="items-center"><UserButton/></div>
     }
     return <div><StartButton/></div>
 }
