@@ -24,8 +24,10 @@ export const UserButton = () => {
     return(
         <DropdownMenu>
             <DropdownMenuTrigger>
-                <div className="w-[6vh] h-[6vh] transition-bg duration-300 hover:ring-[1vh] hover:ring-emerald-500 rounded-full items-center justify-center flex">
+                <div className="w-[8vh] h-[8vh] rounded-full items-center justify-center flex">
+                    <div className="w-[6vh] h-[6vh] hover:ring-[1vh] hover:ring-emerald-500 rounded-full transition-all duration-500">
                         <Avatar />
+                    </div>
                 </div>
             </DropdownMenuTrigger>
             <DropdownMenuContent className="w-40" align="end">
