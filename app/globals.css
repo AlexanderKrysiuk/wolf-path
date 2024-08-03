@@ -92,47 +92,29 @@ body,
     p {
       @apply text-base py-4; /* domyślny rozmiar tekstu */
     }
-    span {
-      @apply text-lg pt-[1vh]
-    }
     @screen sm {
       p {
         @apply text-lg; /* większy tekst na małych ekranach */
-      }
-      span {
-        @apply text-xl
       }
     }
     @screen md {
       p {
         @apply text-2xl ; /* jeszcze większy tekst na średnich ekranach */
       }
-      span {
-        @apply text-3xl
-      }
     }
     @screen lg {
       p {
         @apply text-xl; /* jeszcze większy tekst na dużych ekranach */
-      }
-      span {
-        @apply text-2xl
       }
     }
     @screen xl {
       p {
         @apply text-2xl; /* największy tekst na bardzo dużych ekranach */
       }
-      span {
-        @apply text-3xl
-      }
     }
     @screen 2xl {
       p {
         @apply text-3xl py-8
-      }
-      span {
-        @apply text-4xl
       }
     }
   }

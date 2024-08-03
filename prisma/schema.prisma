@@ -10,9 +10,9 @@ generator client {
 
 datasource db {
   // Production
-  provider = "mysql"
+  // provider = "mysql"
   // Devlopment
-  // provider = "postgresql"
+  provider = "postgresql"
   url = env("DATABASE_URL")
 }
 
@@ -76,8 +76,8 @@ model PasswordResetToken {
 }
 
 model Product {
-  id        String   @id @default(cuid())
+  id        String   @id @default(uuid())
   title     String
-  ownerId   String
-  owner     User     @relation(fields: [ownerId], references: [id])
+  ownerID   String
+  owner     User     @relation(fields: [ownerID], references: [id])
 }

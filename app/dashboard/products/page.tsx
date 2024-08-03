@@ -1,9 +1,20 @@
 "use client"
+import AddProductForm from "@/components/dashboard/add-product-form";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Form, FormControl, FormField, FormItem, FormLabel, FormMessage } from "@/components/ui/form";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { AddProductSchema } from "@/schemas/products";
+import { zodResolver } from "@hookform/resolvers/zod";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { RiCloseLargeFill } from "react-icons/ri";
+import * as z from 'zod';
 
-interface User {
+interface Admin {
     id: string;
     name?: string;
 }
@@ -11,62 +22,40 @@ interface User {
 interface Product {
     id: string;
     title: string;
-    owner: User;
+    owner: Admin;
 }
 
 const ProductsPage = () => {
     const [products, setProducts] = useState<Product[]>([]);
     const [error, setError] = useState<string | null>(null);
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            try {
-                const response = await fetch("http://localhost:3000/api/products", {
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-                const responseText = await response.text();
-
-                if (!response.ok) {
-                    throw new Error(`Network response was not ok: ${response.statusText}`);
-                }
-
-                const products: Product[] = JSON.parse(responseText);
-                setProducts(products);
-            } catch (error) {
-                console.error("Błąd podczas pobierania produktów:", error);
-                setError("Wystąpił błąd podczas pobierania produktów.");
-            }
-        };
-
-        fetchProducts();
-    }, []);
-
-    if (error) {
-        return <p>{error}</p>;
-    }
+    const [addProductWindow, setAddProductWindow] = useState(true);
+    
 
     return (
         <div>
-            <Link href="/dashboard/products/create">
-                <Button>
-                    Dodaj Produkt
+            <Card className="max-w-[600px] mx-auto px-[5vw] py-[5vh]">
+                <Button onClick={() => {setAddProductWindow(true)}}>
+                    Nowy Produkt
                 </Button>
-            </Link>
-            <div>
-                {products.length > 0 ? (
-                    <ul>
-                        {products.map((product) => (
-                            <li key={product.id}>
-                                    {product.title} (Właściciel: {product.owner.name || "Nieznany"})
-                            </li>
-                        ))}
-                    </ul>
-                ) : (
-                    <p>Brak produktów do wyświetlenia.</p>
+                {addProductWindow && (
+                    <div className="fixed z-50 inset-0 flex items-center bg-black bg-opacity-50 justify-center">
+                        <Card className="bg-background w-full px-[10vw] py-[10vh] max-w-[600px]">
+                            <CardHeader>
+                                <CardTitle>
+                                    <div className="flex justify-end">
+                                        <Button onClick={() => setAddProductWindow(false)} className="top right">
+                                            <RiCloseLargeFill/>
+                                        </Button>
+                                    </div>
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <AddProductForm/>
+                            </CardContent>
+                        </Card>
+                    </div>
                 )}
-            </div>
+            </Card>
         </div>
     );
 }
