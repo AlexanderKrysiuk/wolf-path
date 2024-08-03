@@ -5,26 +5,26 @@ import { Button } from "@/components/ui/button";
 const LetsStart = () => {
     return(
         <div>
-            <span className="font-mjolnir flex">
+            <h1 className="font-mjolnir flex gap-x-[1vw]">
                 TO CO,
                 <div className="text-green-500">
                     ZACZYNAMY?
                 </div>
-            </span>
+            </h1>
             <div className="w-full lg:grid lg:grid-cols-2 lg:gap-x-8">
                 <Link href={LINKS.freeConsultation} passHref>
                     <Button className="p-[5vh] bg-green-500 text-white w-full my-4 hover:bg-green-700">
-                        <span>
+                        <h1>
                             Umów Bezpłatną Konsultację
-                        </span>
+                        </h1>
                     </Button>
                 </Link>
 
                 <Link href={LINKS.fullSession} passHref>
                     <Button className="p-[5vh] bg-green-500 text-white w-full my-4 hover:bg-green-700">
-                        <span>
+                        <h1>
                             Odkryj Potęgę Hipnozy
-                        </span>
+                        </h1>
                     </Button>
                 </Link>
             </div>

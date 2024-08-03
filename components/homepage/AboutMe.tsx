@@ -14,9 +14,9 @@ const AboutMe = () => {
                     </div>
                     <div className="lg:col-span-3">
                         <div className="lg:flex-row py-4">
-                            <span className="font-mjolnir flex">KIM
+                            <h1 className="font-mjolnir flex gap-x-[1vw]">KIM
                                 <div className="text-green-500">JESTEM?</div>
-                            </span>
+                            </h1>
                             <p>
                                 Nazywam się Alexander Krysiuk i jestem certyfikowanym hipnoterapeutą. Swoją drogę z hipnozą zacząłem w roku 2020 jako pasjonat i podróżnik. W najciemniejszym momencie mojego życia hipnoza pomogła mi znaleźć wyjście, a po wielu sesjach i pracy z podświadomością, moje życie zaczęło się zmieniać. 16 czerwca 2024 ukończyłem kurs w Akademii Hipnoterapii i teraz jestem gotów, by pomagać innym.
                             </p>

@@ -8,18 +8,18 @@ const BookSessionButtons = () => {
             <div className="w-full">
                 <Link href={LINKS.freeConsultation}>
                     <Button className="p-4 bg-green-500 hover:bg-green-600 text-white">
-                        <span>
+                        <h1>
                             Umów Bezpłatną Konsultację
-                        </span>
+                        </h1>
                     </Button>
                 </Link>
             </div>
             <div className="p-4 pb-8">
                 <Link href={LINKS.fullSession}>
                     <Button className="p-4 bg-green-500 hover:bg-green-600 text-white">
-                        <span>
+                        <h1>
                             Odkryj Potęgę Hipnozy
-                        </span>
+                        </h1>
                     </Button>
                 </Link>
             </div>

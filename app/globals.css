@@ -92,6 +92,9 @@ body,
     p {
       @apply text-base py-4; /* domyślny rozmiar tekstu */
     }
+    h1 {
+      font-size: 4vh
+    }
     @screen sm {
       p {
         @apply text-lg; /* większy tekst na małych ekranach */

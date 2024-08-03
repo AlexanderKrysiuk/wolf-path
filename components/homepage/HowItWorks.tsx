@@ -7,12 +7,12 @@ import BookSessionButtons from "@/components/homepage/BookSessionButtons";
 const HowItWorks = () => {
     return ( 
         <div className="">
-            <span className="font-mjolnir flex">
+            <h1 className="font-mjolnir flex gap-x-[1vw]">
                 NA CZYM TO
                 <div className="text-green-500">
                     POLEGA?
                 </div>
-            </span>
+            </h1>
             <p>
                 Wszystko zaczyna się w naszej podświadomości. To ona zarządza naszym biciem serca, oddychaniem, wszystkimi innymi czynnościami fizjologicznymi. A także naszymi emocjami, zachowaniami, przekonaniami, programami, odruchami itd. itd.
             </p>
