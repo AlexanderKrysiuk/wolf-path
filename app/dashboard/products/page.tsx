@@ -1,6 +1,7 @@
 "use client"
 import { GetProducts } from "@/actions/products/get-products";
 import AddProductForm from "@/components/dashboard/add-product-form";
+import DeleteProductForm from "@/components/dashboard/delete-product-form";
 import EditProductForm from "@/components/dashboard/edit-product-form";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
@@ -32,6 +33,7 @@ interface Product {
 const ProductsPage = () => {
     const [addProductWindow, setAddProductWindow] = useState(false);
     const [editProductWindow, setEditProductWindow] = useState(false);
+    const [deleteProductWindow, setDeleteProductWindow] = useState(false);
     const [currentProduct, setCurrentProduct] = useState<Product | null>(null)
     const [products, setProducts] = useState<Product[]>([])
 
@@ -75,7 +77,10 @@ const ProductsPage = () => {
                                     </Button>
                                 </TableCell>
                                 <TableCell>
-                                    <Button variant="destructive">
+                                    <Button variant="destructive" onClick={() => {
+                                        setCurrentProduct(product)
+                                        setDeleteProductWindow(true)
+                                    }}>
                                         Usuń
                                     </Button>
                                 </TableCell>
@@ -124,6 +129,30 @@ const ProductsPage = () => {
                             </CardHeader>
                             <CardContent>
                                 <EditProductForm product={currentProduct}/>
+                            </CardContent>
+                        </Card>
+                    </div>
+                )}
+                {deleteProductWindow && (
+                    <div className="fixed z-50 inset-0 flex items-center bg-black bg-opacity-50 justify-center">
+                        <Card className="bg-background w-full px-[10vw] py-[10vh] max-w-[600px]">
+                            <CardHeader>
+                                <CardTitle>
+                                    <div className="flex justify-end">
+                                        <Button 
+                                            onClick={() => {
+                                            setCurrentProduct(null);
+                                            setDeleteProductWindow(false)
+                                            fetchProducts()
+                                            }}
+                                            className="top right">
+                                            <RiCloseLargeFill/>
+                                        </Button>
+                                    </div>
+                                </CardTitle>
+                            </CardHeader>
+                            <CardContent>
+                                <DeleteProductForm product={currentProduct}/>
                             </CardContent>
                         </Card>
                     </div>

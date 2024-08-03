@@ -26,3 +26,12 @@ export const EditProductSchema = z.object({
         message: "Tylko admin może dodać produkt"
     })
 })
+
+export const DeleteProductSchema = z.object({
+    id: z.string().uuid({
+        message: "Trzeba podać poprawne id produktu"
+    }),
+    adminID: z.string().cuid({
+        message: "Tylko admin może dodać produkt"
+    })
+})

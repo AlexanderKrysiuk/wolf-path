@@ -27,7 +27,7 @@ const EditProduct = async (values: z.infer<typeof EditProductSchema>) => {
     }
 
     if (admin.role !== "ADMIN") {
-        return { success: false, message: "Nie masz uprawnień do dodania produktu!"}
+        return { success: false, message: "Nie masz uprawnień do edytowania produktu!"}
     }
 
     const ownerID = validatedFields.data.ownerID
