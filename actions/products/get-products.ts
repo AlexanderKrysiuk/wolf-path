@@ -1,7 +1,7 @@
 "use server"
 import { db } from "@/lib/db"
 
-export const GetProducts = async () => {
+export const GetProductsWithOwner = async () => {
     try {
         const products = await db.product.findMany({
             include: {
@@ -19,3 +19,18 @@ export const GetProducts = async () => {
         throw error; // Przekaż błąd dalej
     }
 };
+
+export const GetProducts = async () => {
+    try {
+        const products = await db.product.findMany({
+            select: {
+                id: true,
+                title: true
+            }
+        })
+        return products
+    } catch(error) {
+        console.error("Błąd podczas pobierania produktów:", error);
+        throw error; // Przekaż błąd dalej
+    }
+}

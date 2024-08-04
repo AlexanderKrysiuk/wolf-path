@@ -4,6 +4,7 @@ import { FaUser } from "react-icons/fa";
 import { ExitIcon } from "@radix-ui/react-icons";
 import { BsBox2 } from "react-icons/bs";
 import { CiSettings } from "react-icons/ci";
+import { IoRibbonOutline } from "react-icons/io5";
 
 import {
     DropdownMenu,
@@ -41,6 +42,12 @@ export const UserButton = () => {
                     <CiSettings className="h-4 w-4 mr-2"/>
                     <Link href="/dashboard/settings/">
                         Ustawienia
+                    </Link>
+                </DropdownMenuItem>
+                <DropdownMenuItem>
+                    <IoRibbonOutline className="h-4 w-4 mr-2"/>
+                    <Link href="/dashboard/testimonials/">
+                        Opinie
                     </Link>
                 </DropdownMenuItem>
                 <LogOutButton>

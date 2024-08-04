@@ -31,6 +31,16 @@ model User {
   role          UserRole @default(USER)
   accounts      Account[]
   products      Product[]
+  testimonials  Testimonial[]
+
+  //Social Media Websites
+  profession String?
+  website String?
+  facebook String?
+  instagram String?
+  linkedIn String?
+  youtube String?
+  tiktok String?
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
@@ -76,8 +86,28 @@ model PasswordResetToken {
 }
 
 model Product {
-  id        String   @id @default(uuid())
-  title     String
-  ownerID   String
-  owner     User     @relation(fields: [ownerID], references: [id])
+  id            String   @id @default(uuid())
+  title         String
+  ownerID       String
+  owner         User     @relation(fields: [ownerID], references: [id])
+  testimonials  Testimonial[]
+}
+
+enum TestimonialStatus {
+  PENDING
+  ACCEPTED
+}
+
+model Testimonial {
+  ID          String  @id @default(uuid())
+  title       String
+  description String  @db.Text
+  status      TestimonialStatus @default(PENDING)
+  ownerID     String
+  owner       User     @relation(fields: [ownerID], references: [id])
+  productID   String
+  product     Product @relation(fields: [productID], references: [id])
+  
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
 }

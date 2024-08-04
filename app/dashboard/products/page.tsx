@@ -1,5 +1,5 @@
 "use client"
-import { GetProducts } from "@/actions/products/get-products";
+import { GetProductsWithOwner } from "@/actions/products/get-products";
 import AddProductForm from "@/components/dashboard/add-product-form";
 import DeleteProductForm from "@/components/dashboard/delete-product-form";
 import EditProductForm from "@/components/dashboard/edit-product-form";
@@ -39,7 +39,7 @@ const ProductsPage = () => {
 
     const fetchProducts = async () => {
         try {
-            const products = await GetProducts()
+            const products = await GetProductsWithOwner()
             setProducts(products)
         } catch (error) {
             console.error("Wystąpił błąd podczas pobierania produktów")
