@@ -89,6 +89,7 @@ const UserTestimonialsPage = () => {
                                 </TableRow>
                             </TableHeader>
                             <TableBody>
+                                {/*
                                 {pendingTestimonials.map((pendingtestimonial) => (
                                     <React.Fragment key={pendingtestimonial.ID}>
                                         <TableRow>
@@ -124,6 +125,7 @@ const UserTestimonialsPage = () => {
                                         )}
                                     </React.Fragment>
                                 ))}
+                            */}
                             </TableBody>
                         </Table>
                         <div className="flex mx-auto justify-center">

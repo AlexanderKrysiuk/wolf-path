@@ -12,5 +12,8 @@ export const AddTestimonialSchema = z.object({
     }),
     productID: z.string().uuid({
         message: "Trzeba podać poprawne id produktu"
+    }),
+    acceptTerms: z.boolean().refine((val) => val === true, {
+        message: "Musisz zaakceptować regulamin."
     })
 })

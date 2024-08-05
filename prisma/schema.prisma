@@ -102,6 +102,7 @@ model Testimonial {
   ID          String  @id @default(uuid())
   title       String
   description String  @db.Text
+  acceptTerms Boolean
   status      TestimonialStatus @default(PENDING)
   ownerID     String
   owner       User     @relation(fields: [ownerID], references: [id])

@@ -12,6 +12,12 @@ const AddTestimonial = async (values: z.infer<typeof AddTestimonialSchema>) => {
     if (!validatedFields.success) {
         return { success: false, message: "Podano nieprawidłowe pola!" };
     }
+
+    const acceptTerms = validatedFields.data.acceptTerms
+
+    if (!acceptTerms) {
+        return { success: false, message: "Nie zaakceptowano warunków!"}
+    }
     
     const ownerID = validatedFields.data.ownerID
     const owner = await getUserById(ownerID);
@@ -47,6 +53,7 @@ const AddTestimonial = async (values: z.infer<typeof AddTestimonialSchema>) => {
                 ID: ID,
                 title: title,
                 description: description,
+                acceptTerms: acceptTerms,
                 owner: {
                     connect: { id: ownerID}
                 },

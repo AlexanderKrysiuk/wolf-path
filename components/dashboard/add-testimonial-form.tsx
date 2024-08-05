@@ -13,6 +13,8 @@ import Avatar from "@/components/avatar";
 import AvatarChange from "@/components/avatar-change";
 import AddTestimonialModal from "./add-testimonial-modal";
 import AddTestimonial from "@/actions/testimonials/add-testimonial";
+import { Checkbox } from "../ui/checkbox";
+import { LuAlertTriangle, LuCheckCircle } from "react-icons/lu";
 
 interface Product {
     id: string
@@ -28,28 +30,21 @@ const AddTestimonialForm = () => {
     const [result, setResult] = useState<{ success: boolean, message: string } | null>(null);
     const [modalOpen, setModalOpen] = useState(false); // Stan dla modalu
     const [formData, setFormData] = useState(null); // Stan dla danych formularza
-
     const TITLE_LIMIT = 120;
     const DESCRIPTION_LIMIT = 7000;
-
     const user = useCurrentUser()
-
-    
-
     const handleTitleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         const value = e.target.value;
         form.setValue('title', value);
         setTitleCount(value.length);
         setIsSubmitDisabled(value.length > TITLE_LIMIT || descriptionCount > DESCRIPTION_LIMIT);
     };
-
     const handleDescriptionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
         const value = e.target.value;
         form.setValue('description', value);
         setDescriptionCount(value.length);
         setIsSubmitDisabled(titleCount > TITLE_LIMIT || value.length > DESCRIPTION_LIMIT);
     };
-
     useEffect(() => {
         const fetchProducts = async () => {
             try {
@@ -71,7 +66,6 @@ const AddTestimonialForm = () => {
             productID: "",
         }
     })
-
     const onSubmit = (values: z.infer<typeof AddTestimonialSchema>) => {
         if (!user.image) {
             setResult({ success: false, message: "Nie możesz przesłać opinii bez ustawionego awatara." });
@@ -80,7 +74,6 @@ const AddTestimonialForm = () => {
         setFormData(values)
         setModalOpen(true)
     }
-    
     const handleConfirm = () => {
         setResult(null)
         startTransition(()=>{
@@ -98,7 +91,6 @@ const AddTestimonialForm = () => {
             )
         })
     }
-
     return (
         <div className="space-y-[1vh]">
             <div className="space-y-[1vh]">
@@ -189,7 +181,36 @@ const AddTestimonialForm = () => {
                             </FormItem>
                         )}
                     />
+                    <FormField
+                        control={form.control}
+                        name="acceptTerms"
+                        render={({ field }) => (
+                            <FormItem className="items-center space-x-[1vh] flex">
+                                <FormControl>
+                                    <Checkbox
+                                        disabled={isPending}
+                                        checked={field.value}
+                                        onCheckedChange={field.onChange}
+                                    />
+                                </FormControl>
+                                <FormLabel className="max-w-[80vw]">
+                                    Zgadzam się na przekazanie opinii i wyświetlenie jej na stronie wolf-path oraz mediach społecznościowych. Administratorem danych jest Alexander Krysiuk.
+                                </FormLabel>                               
+                                <FormMessage/>
+                            </FormItem>
+                        )}
+                    />
                     <Button type="submit" disabled={isSubmitDisabled}>Prześlij Opinię</Button>
+                    <div className="flex mx-auto justify-center">
+                        {result && (
+                            <div className={`${result.success ? 'text-emerald-500' : 'text-red-500'}`}>
+                                <p className="flex items-center gap-x-[1vw]">
+                                    {result.success ? <LuCheckCircle/> : <LuAlertTriangle/>}
+                                    {result.message}
+                                </p>
+                            </div>
+                        )}
+                    </div>
                 </form>
             </Form>
             <AddTestimonialModal 
@@ -202,5 +223,4 @@ const AddTestimonialForm = () => {
         </div>
     );
 }
- 
 export default AddTestimonialForm;
